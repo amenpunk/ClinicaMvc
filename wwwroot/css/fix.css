@@ -1,5 +1,7 @@
 .citas{
-    background-color: #1e1e1e !important;
-    width: 100%;
+    background: rgba(2,12,52,0.2);
+
+    padding-top: 25px;
     color:white;
+    text-align: center;
 }
