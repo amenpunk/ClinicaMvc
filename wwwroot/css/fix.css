@@ -1,6 +1,5 @@
 .citas{
     background: rgba(2,12,52,0.2);
-
     padding-top: 25px;
     color:white;
     text-align: center;
@@ -29,11 +28,31 @@ span.event-multiday-finish { margin-left: -4px;  }
 span.event-ghost { background-color:transparent; }
 
 .fecha{
-    padding-top: 25px;
+    list-style: none;
+    padding-top:15px;
+}
+
+
+.centro-dos{
+    border-right: 2px solid #1e1e1e;
+    margin-right:20px;
 }
 
 #title{
-    background-color: rgba(0,200, 200, 0.2);
+    border-bottom: 2px solid #1e1e1e;
+    background-color: rgba(0,200, 200, 0.1);
     padding: 15px;
+    width: 100%;
     margin-bottom: 25px;
+}
+
+.gg{
+    transition: transform .2s;
+    text-align: center;
+    display: block;
+}
+
+.gg:hover{
+    transform: scale(1.3); 
+    opacity: 0.7;
 }
