@@ -29,18 +29,25 @@ span.event-ghost { background-color:transparent; }
 
 .fecha{
     list-style: none;
-    padding-top:15px;
+    padding-top:10px;
+    margin:0;
 }
 
-
-.centro-dos{
-    border-right: 2px solid #1e1e1e;
-    margin-right:20px;
+.no-pad{
+    padding: 0px;
+    margin:0px;
 }
+
+.memes{
+    color:#1e1e1e;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}   
+
 
 #title{
-    border-bottom: 2px solid #1e1e1e;
-    background-color: rgba(0,200, 200, 0.1);
+    border-bottom: 3px solid #1e1e1e;
+    border-top: 3px solid #1e1e1e;
+    background-color: rgba(0,250, 250, 0.1);
     padding: 15px;
     width: 100%;
     margin-bottom: 25px;
