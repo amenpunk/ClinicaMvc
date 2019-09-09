@@ -29,13 +29,15 @@
                 Fecha de Finalización
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdPacienteNavigation)
+                Paciente
             </th>
-            <th></th>
+            <th>
+                Operacion
+            </th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+        @foreach (var item in Model) {
         <tr>
             <td>
             @{
@@ -62,7 +64,7 @@
             </td>
             <td>
                 <a  class="btn btn-success" asp-action="Edit" asp-route-id="@item.IdCita">Edit</a>
-                <a   class="btn btn-warning" asp-action="Details" asp-route-id="@item.IdCita">Details</a>
+                <a  class="btn btn-warning" asp-action="Details" asp-route-id="@item.IdCita">Details</a>
                 <a  class="btn btn-danger" asp-action="Delete" asp-route-id="@item.IdCita">Delete</a>
             </td>
         </tr>
