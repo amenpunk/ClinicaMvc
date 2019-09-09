@@ -1,0 +1,94 @@
+@model Clinica.Models.Paciente
+
+@{
+    ViewData["Title"] = "Pacientes";
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+
+<h4>Paciente</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="PrimerNombre" class="control-label"></label>
+                <input asp-for="PrimerNombre" class="form-control" />
+                <span asp-validation-for="PrimerNombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SegundoNombre" class="control-label"></label>
+                <input asp-for="SegundoNombre" class="form-control" />
+                <span asp-validation-for="SegundoNombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PrimerApellido" class="control-label"></label>
+                <input asp-for="PrimerApellido" class="form-control" />
+                <span asp-validation-for="PrimerApellido" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SegundoApellido" class="control-label"></label>
+                <input asp-for="SegundoApellido" class="form-control" />
+                <span asp-validation-for="SegundoApellido" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApellidoCasada" class="control-label"></label>
+                <input asp-for="ApellidoCasada" class="form-control" />
+                <span asp-validation-for="ApellidoCasada" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Genero" class="control-label"></label>
+                <input asp-for="Genero" class="form-control" />
+                <span asp-validation-for="Genero" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaNacimiento" class="control-label"></label>
+                <input asp-for="FechaNacimiento" class="form-control" />
+                <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NoId" class="control-label"></label>
+                <input asp-for="NoId" class="form-control" />
+                <span asp-validation-for="NoId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TipoEncargado" class="control-label"></label>
+                <input asp-for="TipoEncargado" class="form-control" />
+                <span asp-validation-for="TipoEncargado" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NombreEncargado" class="control-label"></label>
+                <input asp-for="NombreEncargado" class="form-control" />
+                <span asp-validation-for="NombreEncargado" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumeroTel" class="control-label"></label>
+                <input asp-for="NumeroTel" class="form-control" />
+                <span asp-validation-for="NumeroTel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdAdmin" class="control-label"></label>
+                <select asp-for="IdAdmin" class ="form-control" asp-items="ViewBag.IdAdmin"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+</body>
+</html>
