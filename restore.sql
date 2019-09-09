@@ -6,7 +6,7 @@ create table admin_login(
     rol int,
 
     CONSTRAINT pk_ad PRIMARY KEY(id_admin),
-    CONSTRAINT uq_email UNIQUE(email)
+    CONSTRAINT uq_email UNIQUE(email),
 )
 
 
@@ -26,7 +26,7 @@ create table paciente(
     id_admin int,
 
     CONSTRAINT pk_pa PRIMARY KEY(id_paciente),
-    CONSTRAINT fk_ad FOREIGN KEY(id_admin) REFERENCES admin_login(id_admin)
+    CONSTRAINT fk_ad FOREIGN KEY(id_admin) REFERENCES admin_login(id_admin),
 )
 
 
@@ -63,7 +63,25 @@ create table expediente(
     fecha_gen date,
     id_paciente int,
     CONSTRAINT pk_exp PRIMARY KEY(id_expediente),
-    CONSTRAINT fk_pac FOREIGN KEY(id_paciente) REFERENCES paciente(id_paciente)
+    CONSTRAINT fk_pac FOREIGN KEY(id_paciente) REFERENCES paciente(id_paciente),
+)
+
+CREATE table consulta(
+    id_consulta int IDENTITY(1,1),
+    id_doctor int,
+    asunto varchar(450),
+    monto_caja FLOAT,
+    fecha datetime,
+    tipo_consulta varchar(100),
+    id_expediente int,
+    seguro_medico int,
+    nombre_compania varchar(500),
+    poliza_seguro varchar(250),
+    relacion varchar(50),
+
+    CONSTRAINT pk_con PRIMARY KEY(id_consulta),
+    CONSTRAINT fk_doc FOREIGN KEY(id_doctor) REFERENCES doctor(id_doctor),
+    CONSTRAINT fk_exp FOREIGN KEY(id_expediente) REFERENCES expediente(id_expediente)
 )
 
 create table signos(
@@ -93,23 +111,7 @@ create table expediente(
     CONSTRAINT fk_pac FOREIGN KEY(id_paciente) REFERENCES paciente(id_paciente)
 )
 
-CREATE table consulta(
-    id_consulta int IDENTITY(1,1),
-    id_doctor int,
-    asunto varchar(450),
-    monto_caja FLOAT,
-    fecha datetime,
-    tipo_consulta varchar(100),
-    id_expediente int,
-    seguro_medico int,
-    nombre_compania varchar(500),
-    poliza_seguro varchar(250),
-    relacion varchar(50),
 
-    CONSTRAINT pk_con PRIMARY KEY(id_consulta),
-    CONSTRAINT fk_doc FOREIGN KEY(id_doctor) REFERENCES doctor(id_doctor),
-    CONSTRAINT fk_exp FOREIGN KEY(id_expediente) REFERENCES expediente(id_expediente)
-)
 
 create table signos(
     id_medicion int IDENTITY(1,1) not null, 

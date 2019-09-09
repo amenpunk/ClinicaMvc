@@ -1,0 +1,97 @@
+@model IEnumerable<Clinica.Models.Consulta>
+
+@{
+    ViewData["Title"] = "Consulta";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Asunto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MontoCaja)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoConsulta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SeguroMedico)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreCompania)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PolizaSeguro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Relacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdDoctorNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdExpedienteNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Asunto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MontoCaja)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoConsulta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SeguroMedico)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreCompania)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PolizaSeguro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Relacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdDoctorNavigation.IdDoctor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdExpedienteNavigation.IdExpediente)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdConsulta">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdConsulta">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdConsulta">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</body>
+</html>

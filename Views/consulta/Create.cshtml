@@ -1,0 +1,82 @@
+@model Clinica.Models.Consulta
+
+@{
+    ViewData["Title"] = "Consulta";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+
+<h4>Consulta</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="IdDoctor" class="control-label"></label>
+                <select asp-for="IdDoctor" class ="form-control" asp-items="ViewBag.IdDoctor"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Asunto" class="control-label"></label>
+                <input asp-for="Asunto" class="form-control" />
+                <span asp-validation-for="Asunto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MontoCaja" class="control-label"></label>
+                <input asp-for="MontoCaja" class="form-control" />
+                <span asp-validation-for="MontoCaja" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fecha" class="control-label"></label>
+                <input asp-for="Fecha" class="form-control" />
+                <span asp-validation-for="Fecha" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TipoConsulta" class="control-label"></label>
+                <input asp-for="TipoConsulta" class="form-control" />
+                <span asp-validation-for="TipoConsulta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdExpediente" class="control-label"></label>
+                <select asp-for="IdExpediente" class ="form-control" asp-items="ViewBag.IdExpediente"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="SeguroMedico" class="control-label"></label>
+                <input asp-for="SeguroMedico" class="form-control" />
+                <span asp-validation-for="SeguroMedico" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NombreCompania" class="control-label"></label>
+                <input asp-for="NombreCompania" class="form-control" />
+                <span asp-validation-for="NombreCompania" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PolizaSeguro" class="control-label"></label>
+                <input asp-for="PolizaSeguro" class="form-control" />
+                <span asp-validation-for="PolizaSeguro" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Relacion" class="control-label"></label>
+                <input asp-for="Relacion" class="form-control" />
+                <span asp-validation-for="Relacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+</body>
+</html>
