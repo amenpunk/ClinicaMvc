@@ -16,99 +16,116 @@
 <h4>Consulta</h4>
 <hr />
 <div class="row">
+   <!-- DEFUlt 
     <div class="col-md-4">
-        <form asp-action="Create">
+    -->
+        <form class="col-12" asp-action="Create">
+
+        <div class="row">
+
+        <div class="col-md-6">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
             <div id="encabezado">
-            <h5 class="h5">Detalles de la Consulta</h5>
-            <div class="form-group">
-                <label asp-for="IdDoctor" class="control-label">Doctor</label>
-                <select asp-for="IdDoctor" class ="form-control" asp-items="ViewBag.IdDoctor"></select>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="IdExpediente" class="control-label">Paciente</label>
-                <select asp-for="IdExpediente" class ="form-control" asp-items="ViewBag.IdExpediente"></select>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="Fecha" class="control-label"></label>
-                <input asp-for="Fecha" class="form-control" />
-                <span asp-validation-for="Fecha" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="Asunto" class="control-label"></label>
-                <input asp-for="Asunto" class="form-control" />
-                <span asp-validation-for="Asunto" class="text-danger"></span>
-            </div>
-            
-           <!-- 
-            <div class="form-group">
-                <label asp-for="TipoConsulta" class="control-label"></label>
-                <input asp-for="TipoConsulta" class="form-control" />
-                <span asp-validation-for="TipoConsulta" class="text-danger"></span>
-            </div>
-            -->
-
-            <div class="form-group">
-                <label asp-for="TipoConsulta" class="control-label">Tipo de Consulta</label>
-                <!--
-                <input asp-for="Genero" class="form-control" />
-                <span asp-validation-for="Genero" class="text-danger"></span>
+                <h5 class="h5">Detalles de la Consulta</h5>
+                <div class="form-group">
+                    <label asp-for="IdDoctor" class="control-label">Doctor</label>
+                    <select asp-for="IdDoctor" class ="form-control" asp-items="ViewBag.IdDoctor"></select>
+                </div>
+    
+                <div class="form-group">
+                    <label asp-for="IdExpediente" class="control-label">Paciente</label>
+                    <select asp-for="IdExpediente" class ="form-control" asp-items="ViewBag.IdExpediente"></select>
+                </div>
+    
+                <div class="form-group">
+                    <label asp-for="Fecha" class="control-label"></label>
+                    <input asp-for="Fecha" class="form-control" />
+                    <span asp-validation-for="Fecha" class="text-danger"></span>
+                </div>
+    
+                <div class="form-group">
+                    <label asp-for="Asunto" class="control-label"></label>
+                    <input asp-for="Asunto" class="form-control" />
+                    <span asp-validation-for="Asunto" class="text-danger"></span>
+                </div>
+                
+               <!-- 
+                <div class="form-group">
+                    <label asp-for="TipoConsulta" class="control-label"></label>
+                    <input asp-for="TipoConsulta" class="form-control" />
+                    <span asp-validation-for="TipoConsulta" class="text-danger"></span>
+                </div>
                 -->
-                <select asp-for="TipoConsulta" class="form-control">
-                    <option value="En Clinica">En Clinica</option>
-                    <option value="Por Telefono">Por Teléfono</option>
-                    <option value="En Hospital">En Hospital</option>
-                    <option value="A domicilio">A Domicilio</option>
-                </select>
-            </div>
-            
-            </div>
-            <!-- div de polisa -->
 
 
+                <div class="form-group">
+                    <label asp-for="TipoConsulta" class="control-label">Tipo de Consulta</label>
+                    <!--
+                    <input asp-for="Genero" class="form-control" />
+                    <span asp-validation-for="Genero" class="text-danger"></span>
+                    -->
+                    <select asp-for="TipoConsulta" class="form-control">
+                        <option value="En Clinica">En Clinica</option>
+                        <option value="Por Telefono">Por Teléfono</option>
+                        <option value="En Hospital">En Hospital</option>
+                        <option value="A domicilio">A Domicilio</option>
+                    </select>
+                </div>
+                
+            </div>
+
+            </div>
+                <!-- div de polisa -->
+    
+            <div class="col-md-6">
             <div id="cobro">
-            
-            <h5 class="h5">Detalles del Seguro</h5>
-            <div class="form-group">
-                <label asp-for="SeguroMedico" class="control-label"></label>
-                <input asp-for="SeguroMedico" class="form-control" />
-                <span asp-validation-for="SeguroMedico" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="NombreCompania" class="control-label"></label>
-                <input asp-for="NombreCompania" class="form-control" />
-                <span asp-validation-for="NombreCompania" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PolizaSeguro" class="control-label"></label>
-                <input asp-for="PolizaSeguro" class="form-control" />
-                <span asp-validation-for="PolizaSeguro" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Relacion" class="control-label"></label>
-                <input asp-for="Relacion" class="form-control" />
-                <span asp-validation-for="Relacion" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MontoCaja" class="control-label"></label>
-                <input asp-for="MontoCaja" class="form-control" />
-                <span asp-validation-for="MontoCaja" class="text-danger"></span>
-            </div>
+
+                 <h5 class="h5">Detalles del Seguro</h5>
+                 <div class="form-group">
+                     <label asp-for="SeguroMedico" class="control-label"></label>
+                     <input asp-for="SeguroMedico" class="form-control" />
+                     <span asp-validation-for="SeguroMedico" class="text-danger"></span>
+                 </div>
+                 <div class="form-group">
+                     <label asp-for="NombreCompania" class="control-label"></label>
+                     <input asp-for="NombreCompania" class="form-control" />
+                     <span asp-validation-for="NombreCompania" class="text-danger"></span>
+                 </div>
+                 <div class="form-group">
+                     <label asp-for="PolizaSeguro" class="control-label"></label>
+                     <input asp-for="PolizaSeguro" class="form-control" />
+                     <span asp-validation-for="PolizaSeguro" class="text-danger"></span>
+                 </div>
+                 <div class="form-group">
+                     <label asp-for="Relacion" class="control-label"></label>
+                     <input asp-for="Relacion" class="form-control" />
+                     <span asp-validation-for="Relacion" class="text-danger"></span>
+                 </div>
+                 <div class="form-group">
+                     <label asp-for="MontoCaja" class="control-label"></label>
+                     <input asp-for="MontoCaja" class="form-control" />
+                     <span asp-validation-for="MontoCaja" class="text-danger"></span>
+                 </div>
             <!-- end div cobro -->
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
             </div>
+
+            
+        </div>
+            <!-- end div row cobro and detalle -->
+        <div class="row align-items-end">
+              <div class="col-12 form-group">
+                  <input type="submit" value="Create" class=" btn-consulta float-right btn btn-primary" />
+              </div> 
+        </div>
         </form>
-    </div>
-</div>
+ </div>
+
 
 <div>
-    <a class="btn btn-secondary" asp-action="Index">Back to List</a>
+    <a class=" btn-consulta float-right btn btn-secondary" asp-action="Index">Back to List</a>
+
 </div>
 
 </body>

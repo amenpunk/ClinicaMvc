@@ -1,5 +1,11 @@
-﻿#cobro{
+﻿.btn-consulta{
+  margin-top: 15px;
+  width: 250px;
+}
+
+#cobro{
   padding:5%;
+  background: rgba(0, 0, 0, .2);
 }
 
 #encabezado{
