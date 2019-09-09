@@ -22,21 +22,36 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="IdPaciente" class="control-label"></label>
+                <label asp-for="IdPaciente" class="control-label">Paciente</label>
                 <select asp-for="IdPaciente" class ="form-control" asp-items="ViewBag.IdPaciente"></select>
             </div>
+         
+           <div class="form-group">
+                <label asp-for="Estado" class="control-label">Estado</label>
+                <select asp-for="Estado" class="form-control">
+                    <option value="1">Pendiente</option>
+                    <option value="2">Aún No Confirmada</option>
+                    <option value="3">Confirmada</option>
+                    <option value="4">En Sala de Espera</option>
+                    <option value="5">En Consulta</option>
+                    <option value="6">Atendida</option>
+                    <option value="7">Cancelada</option>
+                </select>
+            </div> 
+           <!-- 
             <div class="form-group">
                 <label asp-for="Estado" class="control-label"></label>
                 <input asp-for="Estado" class="form-control" />
                 <span asp-validation-for="Estado" class="text-danger"></span>
             </div>
+            -->
             <div class="form-group">
-                <label asp-for="FechaInicio" class="control-label"></label>
+                <label asp-for="FechaInicio" class="control-label">Fecha de inicio</label>
                 <input asp-for="FechaInicio" class="form-control" />
                 <span asp-validation-for="FechaInicio" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="FechaFinal" class="control-label"></label>
+                <label asp-for="FechaFinal" class="control-label">Fecha de Finalización</label>
                 <input asp-for="FechaFinal" class="form-control" />
                 <span asp-validation-for="FechaFinal" class="text-danger"></span>
             </div>
@@ -48,7 +63,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a class="btn btn-secondary" asp-action="Index">Back to List</a>
 </div>
 
 </body>
