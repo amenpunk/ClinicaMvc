@@ -34,32 +34,35 @@
             <th>
                 @Html.DisplayNameFor(model => model.ApellidoCasada)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Genero)
+            </th>
         -->
             <th>
                 Nombre Completo
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Genero)
-            </th>
+            
             <th>
                 @Html.DisplayNameFor(model => model.FechaNacimiento)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NoId)
+                CUI/DPI
             </th>
            <!-- 
             <th>
                 @Html.DisplayNameFor(model => model.TipoEncargado)
+                @Html.DisplayNameFor(model => model.NoId)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.NombreEncargado)
+                @Html.DisplayNameFor(model => model.NumeroTel)
             </th>
             -->
             <th>
-                @Html.DisplayNameFor(model => model.NumeroTel)
+            Numero de Teléfono
             </th>
             
-            <th></th>
+            <th>Operación</th>
         </tr>
     </thead>
     <tbody>
@@ -72,9 +75,7 @@
                 @Html.DisplayFor(modelItem => item.SegundoApellido)
                 @Html.DisplayFor(modelItem => item.ApellidoCasada)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Genero)
-            </td>
+            
             <td>
                 @Html.DisplayFor(modelItem => item.FechaNacimiento)
             </td>
@@ -82,6 +83,9 @@
                 @Html.DisplayFor(modelItem => item.NoId)
             </td>
             <!-- 
+            <td>
+                @Html.DisplayFor(modelItem => item.Genero)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TipoEncargado)
             </td>

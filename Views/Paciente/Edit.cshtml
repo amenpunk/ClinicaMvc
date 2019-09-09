@@ -46,26 +46,38 @@
                 <input asp-for="ApellidoCasada" class="form-control" />
                 <span asp-validation-for="ApellidoCasada" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="Genero" class="control-label"></label>
+                <label asp-for="Genero" class="control-label">Género</label>
+                <!--
                 <input asp-for="Genero" class="form-control" />
                 <span asp-validation-for="Genero" class="text-danger"></span>
-            </div>
+                -->
+                <select asp-for="Genero" class="form-control">
+                    <option value="M">M</option>
+                    <option value="F">F</option>
+                </select>
+            </div>           
+
             <div class="form-group">
                 <label asp-for="FechaNacimiento" class="control-label"></label>
                 <input asp-for="FechaNacimiento" class="form-control" />
                 <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="NoId" class="control-label"></label>
+                <label asp-for="NoId" class="control-label">CUI/PDI</label>
                 <input asp-for="NoId" class="form-control" />
                 <span asp-validation-for="NoId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="TipoEncargado" class="control-label"></label>
+                <label asp-for="TipoEncargado" class="control-label">Tipo de Encargado</label>
+                
                 <input asp-for="TipoEncargado" class="form-control" />
                 <span asp-validation-for="TipoEncargado" class="text-danger"></span>
+                
             </div>
+
+
             <div class="form-group">
                 <label asp-for="NombreEncargado" class="control-label"></label>
                 <input asp-for="NombreEncargado" class="form-control" />
@@ -89,7 +101,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a  class="btn btn-secondary" asp-action="Index">Back to List</a>
 </div>
 
 </body>
