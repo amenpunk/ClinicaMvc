@@ -1,4 +1,13 @@
-﻿.navbar{
+﻿#cobro{
+  padding:5%;
+}
+
+#encabezado{
+  background: rgba(0, 0, 0, .2);
+  padding:5%;
+}
+
+.navbar{
   background-color: #1e1e1e !important;
   color:white !important;
 }
