@@ -25,10 +25,17 @@
                 <label asp-for="IdPaciente" class="control-label">Paciente</label>
                 <select asp-for="IdPaciente" class ="form-control" asp-items="ViewBag.IdPaciente"></select>
             </div>
-         
+
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModalCenter">
+                Selecionar Expediente
+            </button>
+
+            <hr>
+
            <div class="form-group">
                 <label asp-for="Estado" class="control-label">Estado</label>
-                <select asp-for="Estado" class="form-control">
+                <select id="Paciente_id" asp-for="Estado" class="form-control">
                     <option value="1">Pendiente</option>
                     <option value="2">Aún No Confirmada</option>
                     <option value="3">Confirmada</option>
@@ -64,6 +71,37 @@
 
 <div>
     <a class="btn btn-secondary" asp-action="Index">Back to List</a>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+            <!--Form to select expediente --->
+            <form action="#">
+            <label>Expediente</label>
+                <select>
+                    <option value="UNO">20120312</option>
+                    <option value="UNO">19120939</option>
+                </select>
+            </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 </body>
