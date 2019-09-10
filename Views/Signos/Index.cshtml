@@ -14,10 +14,10 @@
 </head>
 <body>
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
 </p>
-<table class="table">
-    <thead>
+<table class="table table-sm table-responsive">
+    <thead class="thead-dark">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Estatura)
@@ -44,10 +44,10 @@
                 @Html.DisplayNameFor(model => model.Fecha)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdConsultaNavigation)
+                Consulta
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdEnfermeraNavigation)
+                Enfermera
             </th>
             <th></th>
         </tr>
@@ -86,8 +86,8 @@
                 @Html.DisplayFor(modelItem => item.IdEnfermeraNavigation.IdEnfermera)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.IdMedicion">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdMedicion">Details</a> |
+                <a asp-action="Edit" asp-route-id="@item.IdMedicion">Edit</a>,
+                <a asp-action="Details" asp-route-id="@item.IdMedicion">Details</a>,
                 <a asp-action="Delete" asp-route-id="@item.IdMedicion">Delete</a>
             </td>
         </tr>

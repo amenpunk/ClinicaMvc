@@ -21,42 +21,42 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Estatura" class="control-label"></label>
-                <input asp-for="Estatura" class="form-control" />
+                <label asp-for="Estatura" class="control-label">Estatura</label>
+                <input type="number"  step=0.1 asp-for="Estatura" class="form-control" />
                 <span asp-validation-for="Estatura" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Peso" class="control-label"></label>
-                <input asp-for="Peso" class="form-control" />
+                <input  type="number"  step=0.1 asp-for="Peso" class="form-control" />
                 <span asp-validation-for="Peso" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Temp" class="control-label"></label>
-                <input asp-for="Temp" class="form-control" />
+                <label asp-for="Temp" class="control-label">Temperatura</label>
+                <input  type="number"  step=0.1 asp-for="Temp" class="form-control" />
                 <span asp-validation-for="Temp" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Pulso" class="control-label"></label>
-                <input asp-for="Pulso" class="form-control" />
+                <input  type="number"  step=0.1 asp-for="Pulso" class="form-control" />
                 <span asp-validation-for="Pulso" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PresionArt" class="control-label"></label>
-                <input asp-for="PresionArt" class="form-control" />
+                <label asp-for="PresionArt" class="control-label">Presion Arterial</label>
+                <input  type="number"  step=0.1 asp-for="PresionArt" class="form-control" />
                 <span asp-validation-for="PresionArt" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="FrecCardiaca" class="control-label"></label>
-                <input asp-for="FrecCardiaca" class="form-control" />
+                <label asp-for="FrecCardiaca" class="control-label">Frecuencia Cardiaca</label>
+                <input  type="number"  step=0.1 asp-for="FrecCardiaca" class="form-control" />
                 <span asp-validation-for="FrecCardiaca" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="FrecRespiratoria" class="control-label"></label>
-                <input asp-for="FrecRespiratoria" class="form-control" />
+                <label asp-for="FrecRespiratoria" class="control-label">Frecuencia Respiratoria</label>
+                <input  type="number"  step=0.1  asp-for="FrecRespiratoria" class="form-control" />
                 <span asp-validation-for="FrecRespiratoria" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="IdEnfermera" class="control-label"></label>
+                <label asp-for="IdEnfermera" class="control-label">Enfermera</label>
                 <select asp-for="IdEnfermera" class ="form-control" asp-items="ViewBag.IdEnfermera"></select>
             </div>
             <div class="form-group">
@@ -76,7 +76,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="btn btn-dark">Back to List</a>
 </div>
 
 </body>
