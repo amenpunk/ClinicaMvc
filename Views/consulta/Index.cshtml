@@ -15,38 +15,25 @@
 <p>
     <a class="btn btn-primary" asp-action="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
+<table class="table table-bordered table-sm table-responsive">
+    <thead class="thead-dark">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Asunto)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MontoCaja)
-            </th>
+            
             <th>
                 @Html.DisplayNameFor(model => model.Fecha)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TipoConsulta)
+                Seguro
+            </th>
+            
+            <th>
+                Paciente
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.SeguroMedico)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NombreCompania)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PolizaSeguro)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Relacion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdDoctorNavigation)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdExpedienteNavigation)
+                @Html.DisplayNameFor(model => model.MontoCaja)
             </th>
             <th></th>
         </tr>
@@ -57,36 +44,32 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Asunto)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MontoCaja)
-            </td>
+            
             <td>
                 @Html.DisplayFor(modelItem => item.Fecha)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TipoConsulta)
+                @{
+
+                    if( item.SeguroMedico == 1){
+                        <text>Si</text>
+                    }else{
+                        <text>No</text>
+                    }
+                }
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SeguroMedico)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NombreCompania)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PolizaSeguro)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Relacion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdDoctorNavigation.IdDoctor)
-            </td>
+            
+            
+            
             <td>
                 @Html.DisplayFor(modelItem => item.IdExpedienteNavigation.IdExpediente)
             </td>
             <td>
-                <a class="btn btn-success" asp-action="Edit" asp-route-id="@item.IdConsulta">Edit</a> |
-                <a class="btn btn-warning" asp-action="Details" asp-route-id="@item.IdConsulta">Details</a> |
+                @Html.DisplayFor(modelItem => item.MontoCaja)
+            </td>
+            <td>
+                <a class="btn btn-success" asp-action="Edit" asp-route-id="@item.IdConsulta">Edit</a>
+                <a class="btn btn-warning" asp-action="Details" asp-route-id="@item.IdConsulta">Details</a>
                 <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.IdConsulta">Delete</a>
             </td>
         </tr>
