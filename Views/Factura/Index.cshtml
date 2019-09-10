@@ -13,22 +13,24 @@
 </head>
 <body>
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Fecha)
+                Fecha de emisión
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdExpedienteNavigation)
+                Paciente
             </th>
-            <th></th>
+            <th>
+                Operacion
+            </th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+    @foreach (var item in Model) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Fecha)
@@ -37,9 +39,9 @@
                 @Html.DisplayFor(modelItem => item.IdExpedienteNavigation.IdExpediente)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.NumFactura">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.NumFactura">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.NumFactura">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.NumFactura" class="btn btn-dark">Edit</a>
+                <a asp-action="Details" asp-route-id="@item.NumFactura" class="btn btn-dark">Details</a>
+                <a asp-action="Delete" asp-route-id="@item.NumFactura" class="btn btn-dark">Delete</a>
             </td>
         </tr>
 }
