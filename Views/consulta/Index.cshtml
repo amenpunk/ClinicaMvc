@@ -13,8 +13,16 @@
 </head>
 <body>
 <p>
-    <a class="btn btn-primary" asp-action="Create">Create New</a>
+    <a class="btn btn-primary" asp-action="Create">Crear Nueva</a>
 </p>
+<hr style="width:100%">
+<p class="h5">Operaciones</p>
+<p>
+    <a class="btn btn-dark" asp-controller="OrdenLab" asp-action="Create">Orden de laboratorio</a>
+    <a class="btn btn-dark" asp-controller="Diagnostico" asp-action="Create">Diagnostico</a>
+    <a class="btn btn-dark" asp-controller="Receta" asp-action="Create">Receta</a>
+</p>
+
 <table class="table table-bordered table-sm">
     <thead class="thead-dark">
         <tr>

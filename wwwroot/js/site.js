@@ -8,9 +8,9 @@ $('#myModal').on('shown.bs.modal', function () {
 })
 
 function toggleClass(){
-  //console.log("cambio");
+
   var valor = document.getElementById("mySelect").value;
-  //console.log(valor);
+ 
   if(valor == 1){
     $('#cobro').removeClass('d-none');
   }
@@ -19,3 +19,12 @@ function toggleClass(){
     $('#cobro').addClass('d-none');
   } 
 }
+
+
+$.getJSON("/js/array.json", //parametro tipo_cuenta que le envio al servlet lleva llaves por es json
+  function (json) {
+      $.each(json,
+              function (key, value) {
+                  $("#cie").append("<option value='" + value.c + "'>" + value.d + "</option>");
+              });
+});
