@@ -1,5 +1,4 @@
 ﻿.btn-consulta{
-  margin-top: 15px;
   width: 250px;
 }
 
@@ -9,8 +8,8 @@
 }
 
 #encabezado{
-  background: rgba(0, 0, 0, .2);
   padding:5%;
+  background: rgba(0, 0, 0, .2);
 }
 
 .navbar{

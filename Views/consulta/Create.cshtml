@@ -15,56 +15,35 @@
 
 <h4>Consulta</h4>
 <hr />
-<div class="row">
-   <!-- DEFUlt 
-    <div class="col-md-4">
-    -->
-        <form class="col-12" asp-action="Create">
+  <div class="row">
+  
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <form class="col" asp-action="Create">
+      <div class="row" id="master">
 
-        <div class="row">
-
-        <div class="col-md-6">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
-            <div id="encabezado">
+       <div class="col" id="encabezado">
                 <h5 class="h5">Detalles de la Consulta</h5>
                 <div class="form-group">
                     <label asp-for="IdDoctor" class="control-label">Doctor</label>
-                    <select asp-for="IdDoctor" class ="form-control" asp-items="ViewBag.IdDoctor"></select>
+                    <select asp-for="IdDoctor" class="form-control" asp-items="ViewBag.IdDoctor"></select>
                 </div>
-    
                 <div class="form-group">
                     <label asp-for="IdExpediente" class="control-label">Paciente</label>
-                    <select asp-for="IdExpediente" class ="form-control" asp-items="ViewBag.IdExpediente"></select>
+                    <select asp-for="IdExpediente" class="form-control" asp-items="ViewBag.IdExpediente"></select>
                 </div>
-    
                 <div class="form-group">
                     <label asp-for="Fecha" class="control-label"></label>
                     <input asp-for="Fecha" class="form-control" />
                     <span asp-validation-for="Fecha" class="text-danger"></span>
                 </div>
-    
                 <div class="form-group">
                     <label asp-for="Asunto" class="control-label"></label>
                     <input asp-for="Asunto" class="form-control" />
                     <span asp-validation-for="Asunto" class="text-danger"></span>
                 </div>
-                
-               <!-- 
-                <div class="form-group">
-                    <label asp-for="TipoConsulta" class="control-label"></label>
-                    <input asp-for="TipoConsulta" class="form-control" />
-                    <span asp-validation-for="TipoConsulta" class="text-danger"></span>
-                </div>
-                -->
-
-
                 <div class="form-group">
                     <label asp-for="TipoConsulta" class="control-label">Tipo de Consulta</label>
-                    <!--
-                    <input asp-for="Genero" class="form-control" />
-                    <span asp-validation-for="Genero" class="text-danger"></span>
-                    -->
+
                     <select asp-for="TipoConsulta" class="form-control">
                         <option value="En Clinica">En Clinica</option>
                         <option value="Por Telefono">Por Teléfono</option>
@@ -72,83 +51,116 @@
                         <option value="A domicilio">A Domicilio</option>
                     </select>
                 </div>
-                
-            </div>
 
-            </div>
-                <!-- div de polisa -->
-    
-            <div class="col-md-6">
-            <div id="cobro">
-
-                 <h5 class="h5">Detalles del Seguro</h5>
-                 <!--
-                 <div class="form-group">
-                     <label asp-for="SeguroMedico" class="control-label"></label>
-                     <input asp-for="SeguroMedico" class="form-control" />
-                     <span asp-validation-for="SeguroMedico" class="text-danger"></span>
-                 </div>
-                 -->
                 <div class="form-group">
                     <label asp-for="SeguroMedico" class="control-label">Seguro Medico</label>
-                    <select asp-for="SeguroMedico" class="form-control">
+                    <select id="mySelect" onchange="toggleClass()" asp-for="SeguroMedico" class="form-control">
                         <option value="1">Si</option>
-                        <option value="0">No</option>
+                        <option id="plataforma" value="0" selected>No</option>
                     </select>
                 </div>
+          </div>
 
-                 <div class="form-group">
-                     <label asp-for="NombreCompania" class="control-label"></label>
-                     <input asp-for="NombreCompania" class="form-control" />
-                     <span asp-validation-for="NombreCompania" class="text-danger"></span>
-                 </div>
-                 <div class="form-group">
-                     <label asp-for="PolizaSeguro" class="control-label"></label>
-                     <input asp-for="PolizaSeguro" class="form-control" />
-                     <span asp-validation-for="PolizaSeguro" class="text-danger"></span>
-                 </div>
-                 <!--
-                 <div class="form-group">
-                     <label asp-for="Relacion" class="control-label"></label>
-                     <input asp-for="Relacion" class="form-control" />
-                     <span asp-validation-for="Relacion" class="text-danger"></span>
-                 </div>
-                 -->
-                <div class="form-group">
-                    <label asp-for="Relacion" class="control-label">Relación</label>
-                    <select asp-for="Relacion" class="form-control">
-                        <option value="Principal">Asegurado Principal</option>
-                        <option value="Conyuge">Cónyuge</option>
-                        <option value="Hijo(a)">Hijo(a)</option>
-                        <option value="Empleado">Empleado</option>
-                    </select>
-                </div>
+          <div id="cobro" class="col-6 d-none">
 
-                <div class="form-group">
-                     <label asp-for="MontoCaja" class="control-label"></label>
-                     <input asp-for="MontoCaja" class="form-control" />
-                     <span asp-validation-for="MontoCaja" class="text-danger"></span>
-                 </div>
-            <!-- end div cobro -->
+            <h5 class="h5">Detalles del Seguro</h5>
+
+
+            <div class="form-group">
+                <label asp-for="NombreCompania" class="control-label"></label>
+                <input asp-for="NombreCompania" class="form-control" />
+                <span asp-validation-for="NombreCompania" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <label asp-for="PolizaSeguro" class="control-label"></label>
+                <input asp-for="PolizaSeguro" class="form-control" />
+                <span asp-validation-for="PolizaSeguro" class="text-danger"></span>
             </div>
 
+            <div class="form-group">
+                <label asp-for="Relacion" class="control-label">Relación</label>
+                <select asp-for="Relacion" class="form-control">
+                    <option value="Principal">Asegurado Principal</option>
+                    <option value="Conyuge">Cónyuge</option>
+                    <option value="Hijo(a)">Hijo(a)</option>
+                    <option value="Empleado">Empleado</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="MontoCaja" class="control-label"></label>
+                <input asp-for="MontoCaja" class="form-control" />
+                <span asp-validation-for="MontoCaja" class="text-danger"></span>
+            </div>
+        </div>
+
+
+
+      </div><!--end of row of two divs-->
+
+         <div class="row" > 
+                  <div class="col-6 float-right">
+                      <button type="button" class=" float-right btn btn-dark" data-toggle="modal" data-target="#exampleModalLong">
+                          Mediciones
+                      </button>
+                      <button type="button" class=" float-right btn btn-dark" data-toggle="modal" data-target="#exampleModalCenter">
+                          Diagnostico
+                      </button>
+                  </div>
+
+             <div class="col-6 form-group">
+                 <input type="submit" value="Create" class=" btn-consulta float-right btn btn-success" />
+             </div>
             
+             <div>
+                 <a class=" btn-consulta float-right btn btn-secondary" asp-action="Index">Back to List</a>
+             </div>
+         </div>
+    </form> 
+  </div>
+ <!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
         </div>
-            <!-- end div row cobro and detalle -->
-        <div class="row align-items-end">
-              <div class="col-12 form-group">
-                  <input type="submit" value="Create" class=" btn-consulta float-right btn btn-primary" />
-              </div> 
-        </div>
-        </form>
- </div>
-
-
-<div>
-    <a class=" btn-consulta float-right btn btn-secondary" asp-action="Index">Back to List</a>
-
+    </div>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div> 
+
+
 
 </body>
 </html>
