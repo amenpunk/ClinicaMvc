@@ -53,15 +53,32 @@
                 </div>
 
                 <div class="form-group">
+                    <label asp-for="MontoCaja" class="control-label"></label>
+                    <input asp-for="MontoCaja" class="form-control" />
+                    <span asp-validation-for="MontoCaja" class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group">
                     <label asp-for="SeguroMedico" class="control-label">Seguro Medico</label>
                     <select id="mySelect" onchange="toggleClass()" asp-for="SeguroMedico" class="form-control">
                         <option value="1">Si</option>
                         <option id="plataforma" value="0" selected>No</option>
                     </select>
                 </div>
+
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+            </div>
+            <div class="form-group">
+                <button asp-action="Index" value="Regresar" class="btn btn-warning" >
+                    Regresar
+                </button>
+            </div>
+
           </div>
 
-          <div id="cobro" class="col-6 d-none">
+          <div id="cobro" class="col-md-4 col-sm-12  d-none">
 
             <h5 class="h5">Detalles del Seguro</h5>
 
@@ -87,80 +104,12 @@
                 </select>
             </div>
 
-            <div class="form-group">
-                <label asp-for="MontoCaja" class="control-label"></label>
-                <input asp-for="MontoCaja" class="form-control" />
-                <span asp-validation-for="MontoCaja" class="text-danger"></span>
-            </div>
         </div>
-
 
 
       </div><!--end of row of two divs-->
-
-         <div class="row" > 
-                  <div class="col-6 float-right">
-                      <button type="button" class=" float-right btn btn-dark" data-toggle="modal" data-target="#exampleModalLong">
-                          Mediciones
-                      </button>
-                      <button type="button" class=" float-right btn btn-dark" data-toggle="modal" data-target="#exampleModalCenter">
-                          Diagnostico
-                      </button>
-                  </div>
-
-             <div class="col-6 form-group">
-                 <input type="submit" value="Create" class=" btn-consulta float-right btn btn-success" />
-             </div>
             
-             <div>
-                 <a class=" btn-consulta float-right btn btn-secondary" asp-action="Index">Back to List</a>
-             </div>
-         </div>
     </form> 
-  </div>
- <!-- Modal -->
-<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
     </div>
-</div>
-<!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-    </div> 
-
-
-
 </body>
 </html>
