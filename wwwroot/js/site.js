@@ -21,7 +21,7 @@ function toggleClass(){
 }
 
 
-$.getJSON("/js/array.json", //parametro tipo_cuenta que le envio al servlet lleva llaves por es json
+$.getJSON("/js/array.json", 
   function (json) {
       $.each(json,
               function (key, value) {
