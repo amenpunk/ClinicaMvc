@@ -1,4 +1,5 @@
 ﻿@using Microsoft.AspNetCore.Http
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,14 +56,11 @@
                         -->
                     </ul>
                 </div>
-                <a class="d-none d-sm-block" href="#">
 
-                    <i>Cerrar Session   
-                    @{ string x = Context.Session.GetString("user"); }
-                    @x
+                    <i>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="AdminLogin" asp-action="Logout">Cerrar Session</a>
                     </i>
 
-                </a>
             </div>
         </nav>
     </header>
