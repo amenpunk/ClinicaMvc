@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Clinica.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Clinica
 {
+    [Authorize]
     public class CitaController : Controller
     {
         private readonly clinicaContext _context;
