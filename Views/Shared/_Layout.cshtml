@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -55,7 +56,11 @@
                     </ul>
                 </div>
                 <a class="d-none d-sm-block" href="#">
-                    <i>Cerrar Session</i>   
+
+                    <i>Cerrar Session   
+                   { var x = HttpContext.Session.GetString("user"); }
+                    </i>
+
                 </a>
             </div>
         </nav>
