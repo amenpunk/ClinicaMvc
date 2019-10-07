@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Session;
 
 namespace Clinica.Controllers {
     public class AdminLoginController : Controller {
@@ -142,7 +143,7 @@ namespace Clinica.Controllers {
                 return View ("~/Views/AdminLogin/login.cshtml");
             }
             //return View ("~/Views/Home/index.cshtml" );
-            return View ( "~/Views/AdminLogin/home.cshtml");
+            return View ( "~/Views/home/index.cshtml");
         }
 
         public IActionResult Login () {

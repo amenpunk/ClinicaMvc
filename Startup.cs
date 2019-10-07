@@ -38,6 +38,8 @@ namespace Clinica
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddDbContext<clinicaContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDistributedMemoryCache();
+            services.AddSession();
 
         }
 
@@ -59,6 +61,7 @@ namespace Clinica
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
+            app.UseSession();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

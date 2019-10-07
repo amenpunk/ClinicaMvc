@@ -58,7 +58,8 @@
                 <a class="d-none d-sm-block" href="#">
 
                     <i>Cerrar Session   
-                   { var x = HttpContext.Session.GetString("user"); }
+                    @{ string x = Context.Session.GetString("user"); }
+                    @x
                     </i>
 
                 </a>
