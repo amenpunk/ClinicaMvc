@@ -187,3 +187,15 @@ create table des_receta(
     CONSTRAINT pk_des PRIMARY KEY(id_descripcion),
     CONSTRAINT fk_reset FOREIGN KEY(id_receta) REFERENCES receta(id_receta),
 )
+
+CREATE PROCEDURE [dbo].[Login]   
+ @username varchar(250),  
+ @password varchar(250)  
+AS  
+BEGIN  
+ SELECT * 
+ FROM admin_login 
+ WHERE email = @username  
+ AND pass = @password  
+END  
+ 
