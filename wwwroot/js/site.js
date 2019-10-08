@@ -45,3 +45,24 @@ $.getJSON("/api/PacienteApi",function (res) {
                 $("#IdPaciente").append("<option value='" + value.idPaciente + "'>" + value.primerNombre +" "+ value.segundoNombre + " " + value.primerApellido +" "+ value.segundoApellido + "</option>");
             });
 });
+
+
+$("#IdPaciente").on('change', function(){
+    var std = $(this).find(":selected").val()
+    alert(std);
+    $.getJSON("/api/ExpedienteApi/"+std,function (res) {
+    $.each(res,
+            function (key, value) {
+                $("#tipoExp").append("<option value='" + value.idExpediente + "'>" + value.fechaGen + "</option>");
+            });
+    });
+}); 
+
+/*
+$.getJSON("/api/ExpedienteApi",function (res) {
+    $.each(res,
+            function (key, value) {
+                $("#tipoExp").append("<option value='" + value.idExpediente + "'>" + value.fechaGen + "</option>");
+            });
+});
+*/
