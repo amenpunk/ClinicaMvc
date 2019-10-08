@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace Clinica.Controllers {
+
     public class AdminLoginController : Controller {
         private readonly clinicaContext _context;
 
@@ -23,6 +24,22 @@ namespace Clinica.Controllers {
         // GET: AdminLogin
         public async Task<IActionResult> Index () {
             return View (await _context.AdminLogin.ToListAsync ());
+        }
+
+        public IActionResult Error () {
+                return View ();
+        }
+
+        public IActionResult Login () {
+
+            string userName = HttpContext.User.Identity.Name;
+            if (userName == null) {
+
+                return View ();
+
+            } else {
+                return View ("~/Views/home/index.cshtml");
+            }
         }
 
         // GET: AdminLogin/Details/5
@@ -184,7 +201,7 @@ namespace Clinica.Controllers {
             } else //User was not found
             {
                 //Do something to let them know that their credentials were not valid
-                return View ("~/Views/AdminLogin/index.cshtml");
+                return View ("~/Views/AdminLogin/login.cshtml");
             }
             //return View ("~/Views/Home/index.cshtml" );
             return View ("~/Views/home/index.cshtml");
@@ -193,7 +210,7 @@ namespace Clinica.Controllers {
         public IActionResult Logout () {
             HttpContext.SignOutAsync (
                 CookieAuthenticationDefaults.AuthenticationScheme);
-            return RedirectToAction ("index", "AdminLogin");
+            return RedirectToAction ("Login", "AdminLogin");
         }
 
     }

@@ -32,7 +32,11 @@ namespace Clinica {
             // });
             services.AddMvc ().SetCompatibilityVersion (CompatibilityVersion.Version_2_2);
             services.AddDbContext<clinicaContext> (options => options.UseSqlServer (Configuration.GetConnectionString ("DefaultConnection")));
-            services.AddAuthentication (CookieAuthenticationDefaults.AuthenticationScheme).AddCookie ();
+            services.AddAuthentication (CookieAuthenticationDefaults.AuthenticationScheme).AddCookie (
+                options =>{
+                    options.LoginPath = "/Adminlogin/Login";
+                    options.LogoutPath = "/AdminLogin/logout";
+                });
 
         }
 
@@ -42,6 +46,7 @@ namespace Clinica {
                 app.UseDeveloperExceptionPage ();
             } else {
                 app.UseExceptionHandler ("/Home/Error");
+                //app.UseExceptionHandler ("/AdminLogin/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts ();
             }
@@ -54,7 +59,8 @@ namespace Clinica {
             app.UseMvc (routes => {
                 routes.MapRoute (
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    //template: "{controller=AdminLogin}/{action=Login}");
+                    template: "{controller=AdminLogin}/{action=Login}/{id?}");
             });
             //app.UseDefaultFiles();
             //app.UseStaticFiles();

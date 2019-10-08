@@ -6,9 +6,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Clinica.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Clinica.Controllers
 {
+
+    [Authorize]
     public class FacturaController : Controller
     {
         private readonly clinicaContext _context;

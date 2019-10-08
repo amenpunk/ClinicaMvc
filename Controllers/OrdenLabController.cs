@@ -5,10 +5,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 using Clinica.Models;
 
 namespace Clinica.Controllers
 {
+    [Authorize]
     public class OrdenLabController : Controller
     {
         private readonly clinicaContext _context;
