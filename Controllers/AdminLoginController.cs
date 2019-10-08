@@ -184,10 +184,16 @@ namespace Clinica.Controllers {
             } else //User was not found
             {
                 //Do something to let them know that their credentials were not valid
-                return View ("~/Views/AdminLogin/login.cshtml");
+                return View ("~/Views/AdminLogin/index.cshtml");
             }
             //return View ("~/Views/Home/index.cshtml" );
             return View ("~/Views/home/index.cshtml");
+        }
+
+        public IActionResult Logout () {
+            HttpContext.SignOutAsync (
+                CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction ("index", "AdminLogin");
         }
 
     }
