@@ -1,10 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using System.Web;
 using Clinica.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -12,7 +10,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Session;
 using Microsoft.EntityFrameworkCore;
 
 namespace Clinica.Controllers {
@@ -141,45 +138,43 @@ namespace Clinica.Controllers {
                 var claims = new List<Claim> ();
                 //claims.Add (new Claim ("nombre", myUser.NombreAdmin.ToString ()));
                 //claims.Add (new Claim ("correo", myUser.Email.ToString ()));
-                claims.Add (new Claim (ClaimTypes.Role, myUser.Rol.ToString()));
-                claims.Add(new Claim(ClaimTypes.Name, myUser.NombreAdmin.ToString()));
+                claims.Add (new Claim (ClaimTypes.Role, myUser.Rol.ToString ()));
+                claims.Add (new Claim (ClaimTypes.Name, myUser.NombreAdmin.ToString ()));
 
                 //new Claim (ClaimTypes.Name, myUser.Email.ToString ()),
                 //new Claim ("FullName", myUser.NombreAdmin.ToString ()),
                 //new Claim (ClaimTypes.Role, myUser.Rol),
 
-                var authProperties = new AuthenticationProperties {
-                    //AllowRefresh = true,
-                    // Refreshing the authentication session should be allowed.
+                //var authProperties = new AuthenticationProperties {
+                //AllowRefresh = true,
+                // Refreshing the authentication session should be allowed.
 
-                    //ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(10),
-                    // The time at which the authentication ticket expires. A 
-                    // value set here overrides the ExpireTimeSpan option of 
-                    // CookieAuthenticationOptions set with AddCookie.
+                //ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(10),
+                // The time at which the authentication ticket expires. A 
+                // value set here overrides the ExpireTimeSpan option of 
+                // CookieAuthenticationOptions set with AddCookie.
 
-                    //IsPersistent = true,
-                    // Whether the authentication session is persisted across 
-                    // multiple requests. When used with cookies, controls
-                    // whether the cookie's lifetime is absolute (matching the
-                    // lifetime of the authentication ticket) or session-based.
+                //IsPersistent = true,
+                // Whether the authentication session is persisted across 
+                // multiple requests. When used with cookies, controls
+                // whether the cookie's lifetime is absolute (matching the
+                // lifetime of the authentication ticket) or session-based.
 
-                    //IssuedUtc = <DateTimeOffset>,
-                    // The time at which the authentication ticket was issued.
+                //IssuedUtc = <DateTimeOffset>,
+                // The time at which the authentication ticket was issued.
 
-                    RedirectUri = "/AdminLogin/Login"
-                    // The full path or absolute URI to be used as an http 
-                    // redirect response value.
-                };
+                //RedirectUri = "/AdminLogin/Login"
+                // The full path or absolute URI to be used as an http 
+                // redirect response value.
+                //                };
 
                 //var claimsIdentity = new ClaimsIdentity (claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 var identity = new ClaimsIdentity (claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 var principal = new ClaimsPrincipal (identity);
                 //var props = new AuthenticationProperties();
-                HttpContext.SignInAsync (CookieAuthenticationDefaults.AuthenticationScheme, principal, authProperties).Wait ();
-                //await HttpContext.SignInAsync (
-                //    CookieAuthenticationDefaults.AuthenticationScheme,
-                //    new ClaimsPrincipal (claimsIdentity),
-                //    authProperties);
+                HttpContext.SignInAsync (CookieAuthenticationDefaults.AuthenticationScheme, principal).Wait ();
+                //await httpContext.SignInAsync(IdentityConstants.ApplicationScheme);
+                await HttpContext.SignInAsync (CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
                 //HttpContext.Session.SetString ("user", myUser.NombreAdmin.ToString ());
                 //HttpContext.Session.SetString ("rol", myUser.Rol.ToString ());
@@ -189,21 +184,16 @@ namespace Clinica.Controllers {
             } else //User was not found
             {
                 //Do something to let them know that their credentials were not valid
-                return View ("~/Views/AdminLogin/login.cshtml");
+                return View ("~/Views/AdminLogin/index.cshtml");
             }
             //return View ("~/Views/Home/index.cshtml" );
             return View ("~/Views/home/index.cshtml");
         }
 
-        public IActionResult Login () {
-
-            return View ();
-        }
-
         public IActionResult Logout () {
             HttpContext.SignOutAsync (
                 CookieAuthenticationDefaults.AuthenticationScheme);
-            return RedirectToAction ("Login", "AdminLogin");
+            return RedirectToAction ("index", "AdminLogin");
         }
 
     }
