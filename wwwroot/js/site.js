@@ -38,3 +38,10 @@ function obtenerCie(){
 $('.message a').click(function(){
    $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
 });
+
+$.getJSON("/api/PacienteApi",function (res) {
+    $.each(res,
+            function (key, value) {
+                $("#IdPaciente").append("<option value='" + value.idPaciente + "'>" + value.primerNombre +" "+ value.segundoNombre + " " + value.primerApellido +" "+ value.segundoApellido + "</option>");
+            });
+});
