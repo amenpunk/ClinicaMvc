@@ -42,14 +42,20 @@ $('.message a').click(function(){
 $.getJSON("/api/PacienteApi",function (res) {
     $.each(res,
             function (key, value) {
-                $("#IdPaciente").append("<option value='" + value.idPaciente + "'>" + value.primerNombre +" "+ value.segundoNombre + " " + value.primerApellido +" "+ value.segundoApellido + "</option>");
+                $("#IdPacienteCita").append("<option value='" + value.idPaciente + "'>" + value.primerNombre +" "+ value.segundoNombre + " " + value.primerApellido +" "+ value.segundoApellido + "</option>");
             });
 });
 
 
-$("#IdPaciente").on('change', function(){
-    var std = $(this).find(":selected").val()
-    alert(std);
+var std = $("select option:selected").val();
+
+$("#IdPacienteCita").on('change', function(){
+    std = $(this).find(":selected").val()
+});
+
+
+$("#expSec").on('click', function(){
+    $('#tipoExp').empty();
     $.getJSON("/api/ExpedienteApi/"+std,function (res) {
     $.each(res,
             function (key, value) {
@@ -58,11 +64,34 @@ $("#IdPaciente").on('change', function(){
     });
 }); 
 
-/*
-$.getJSON("/api/ExpedienteApi",function (res) {
-    $.each(res,
-            function (key, value) {
-                $("#tipoExp").append("<option value='" + value.idExpediente + "'>" + value.fechaGen + "</option>");
-            });
+
+$('#nuevoExp').on('click', function(){
+    //var expe = $("#tipoExp option:selected").val();
+    var paci = $("#IdPacienteCita option:selected").val();
+    var date;
+    date = new Date();
+    date = date.getUTCFullYear() + '-' +
+        ('00' + (date.getUTCMonth()+1)).slice(-2) + '-' +
+        ('00' + date.getUTCDate()).slice(-2) + ' ' + 
+        ('00' + date.getUTCHours()).slice(-2) + ':' + 
+        ('00' + date.getUTCMinutes()).slice(-2) + ':' + 
+        ('00' + date.getUTCSeconds()).slice(-2);
+    //console.log(date);
+
+    //alert(expe+ " paciente "+ paci + " fecha : " + date);
+    $.ajax({
+      url : "/api/ExpedienteApi",
+      data: { 
+              IdPaciente: paci,
+              FechaGen: date
+            },
+      type : "POST"
+    }).done(function (result) {
+      if (result != null) {
+        alert("Expediente Generado");
+      }
+      else {
+        alert("Algo Salio Mal");
+        }
+      }).fail(function (xhr, status, error) {  })
 });
-*/

@@ -42,6 +42,16 @@ namespace Clinica.Controllers
             return Ok(exp);
         }
 
+        
+        [HttpPost]
+        public async Task<ActionResult<Expediente>> PostExpediente(Expediente exp){
+            _context.Expediente.Add(exp);
+            await _context.SaveChangesAsync();
+            return CreatedAtAction("GetExpediente", new { id = exp.IdExpediente}, exp);
+            //return CreatedAtRoute("GetDocument",doc, null);
+        }
+
+
 
     }
 }
