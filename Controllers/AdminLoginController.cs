@@ -213,5 +213,6 @@ namespace Clinica.Controllers {
             return RedirectToAction ("Login", "AdminLogin");
         }
 
+        
     }
 }

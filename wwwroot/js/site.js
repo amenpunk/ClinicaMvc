@@ -95,3 +95,16 @@ $('#nuevoExp').on('click', function(){
         }
       }).fail(function (xhr, status, error) {  })
 });
+
+
+var ciente = $(".ciente")
+
+ciente.each(function(){
+    var op = this;
+    var id = $(this).attr('value');
+    //console.log(id);
+    
+    $.getJSON("/api/PacienteApi/"+id,function (res) {
+        op.innerHTML = res.primerNombre+" " + res.segundoNombre +" "+ res.primerApellido +" "+ res.segundoApellido;
+    });
+})
