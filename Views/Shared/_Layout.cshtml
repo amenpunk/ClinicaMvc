@@ -29,7 +29,10 @@
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><i class="fas fa-home"></i></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
+                        <!--
                     <span class="navbar-toggler-icon"></span>
+                    -->
+                    <i class="fas fa-list"></i>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
@@ -55,11 +58,7 @@
                         </li>
                         -->
                     </ul>
-                </div>
-                    <i>
-                        <a class="nav-link text-dark" asp-area="" asp-controller="AdminLogin" asp-action="Logout">Cerrar Session</a>
-                    </i>
-            </div>
+                
         </nav>
     </header>
 
@@ -73,9 +72,7 @@
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2019 - Clinica - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-
-            @{string userName = HttpContext.User.Identity.Name;}
-
+            <a class="cerrar nav-link text-dark" asp-area="" asp-controller="AdminLogin" asp-action="Logout">Cerrar Session</a>
         </div>
     </footer>
 

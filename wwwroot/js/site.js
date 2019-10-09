@@ -27,7 +27,7 @@ function obtenerCie(){
         
       $.each(json,
         function (key, value) {
-          $("#cie").append("<option value='" + value.c + "'>" + value.d + "</option>");
+//          $("#cie").append("<option value='" + value.c + "'>" + value.d + "</option>");
   
     });
   
@@ -108,3 +108,5 @@ ciente.each(function(){
         op.innerHTML = res.primerNombre+" " + res.segundoNombre +" "+ res.primerApellido +" "+ res.segundoApellido;
     });
 })
+
+
