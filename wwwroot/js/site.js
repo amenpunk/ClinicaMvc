@@ -3,6 +3,26 @@
 
 // Write your JavaScript code.
 
+var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = today.getFullYear();
+
+
+var dateS = yyyy+"-"+mm+"-"+dd+"T00:00:00"
+var dateF = yyyy+"-"+mm+"-"+dd+"T12:59:59"
+
+
+var date;
+    date = new Date();
+    date = date.getUTCFullYear() + '-' +
+        ('00' + (date.getUTCMonth()+1)).slice(-2) + '-' +
+        ('00' + date.getUTCDate()).slice(-2) + ' ' + 
+        ('00' + date.getUTCHours()).slice(-2) + ':' + 
+        ('00' + date.getUTCMinutes()).slice(-2) + ':' + 
+        ('00' + date.getUTCSeconds()).slice(-2);
+
+
 $('#myModal').on('shown.bs.modal', function () {
   $('#myInput').trigger('focus')
 })
@@ -68,17 +88,7 @@ $("#expSec").on('click', function(){
 $('#nuevoExp').on('click', function(){
     //var expe = $("#tipoExp option:selected").val();
     var paci = $("#IdPacienteCita option:selected").val();
-    var date;
-    date = new Date();
-    date = date.getUTCFullYear() + '-' +
-        ('00' + (date.getUTCMonth()+1)).slice(-2) + '-' +
-        ('00' + date.getUTCDate()).slice(-2) + ' ' + 
-        ('00' + date.getUTCHours()).slice(-2) + ':' + 
-        ('00' + date.getUTCMinutes()).slice(-2) + ':' + 
-        ('00' + date.getUTCSeconds()).slice(-2);
-    //console.log(date);
-
-    //alert(expe+ " paciente "+ paci + " fecha : " + date);
+        //alert(expe+ " paciente "+ paci + " fecha : " + date);
     $.ajax({
       url : "/api/ExpedienteApi",
       data: { 
@@ -109,4 +119,14 @@ ciente.each(function(){
     });
 })
 
+$.getJSON("/api/CitaApi/",function (res) {
+    $.each(res,
+            function (key, value) {
+                if( value.fechaInicio >= dateS && value.fechaInicio <= dateF  ){
 
+                  //console.log("fecha cita: " + value.fechaInicio + " fecha de hoy: " + dateS);
+                  console.log("cita:" + value.idCita + " fecha: " + value.fechaInicio + " paciente: " + value.idPaciente)
+                 
+                }  
+            });
+});
