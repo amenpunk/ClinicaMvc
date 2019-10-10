@@ -27,38 +27,15 @@
     <h1 class="display-8">Citas del Dia</h1>
     </div>
 </div>
-          <table class="table table-responsive table-hover table-striped">
+          <table class="table table-hover table-striped">
             <thead class="thead-light memes">
               <tr>
                 <th scope="">Paciente</th>
                 <th scope="">Hora</th>
               </tr>
             </thead>
-            <tbody class="memes">
-              <tr>
-                <td >Juan Gomez</th>
-                <td>12:25 PM</td>
-              </tr>
-              <tr>
-                <td >Juan Gomez</th>
-                <td>12:25 PM</td>
-              </tr>
-              <tr>
-                <td >Juan Gomez</th>
-                <td>1:25 PM</td>
-              </tr>
-              <tr>
-                <td >Juan Gomez</th>
-                <td>1:25 PM</td>
-              </tr>
-              <tr>
-                <td >Juan Gomez</th>
-                <td>1:25 PM</td>
-              </tr>
-              <tr>
-                <td >Juan Gomez</th>
-                <td>1:25 PM</td>
-              </tr>
+            <tbody id="pbody" class="memes">
+              
             </tbody>
           </table>
     </div> 
@@ -146,3 +123,39 @@
         </table>
     </div>
 </div>
+<script>
+
+window.onload = function() {
+$.getJSON("/api/CitaApi/", function (res) {
+  $.each(res,
+    function (key, value) {
+      if (value.fechaInicio >= dateS && value.fechaInicio <= dateF) {
+
+        //console.log("fecha cita: " + value.fechaInicio + " fecha de hoy: " + dateS);
+        //console.log("cita:" + value.idCita + " fecha: " + value.fechaInicio + " paciente: " + value.idPaciente)
+        //var tabla = document.getElementById('tabla');
+        var id = value.idPaciente;
+        //console.log(id);
+        $.getJSON("/api/PacienteApi/" + id, function (res) {
+
+          ncomp = res.primerNombre + " " + res.segundoNombre + " " + res.primerApellido + " " + res.segundoApellido;
+          var tbody = document.getElementById("pbody");
+          //var tbody = document.getElementsByTagName('tbody')[0];
+          var tr = document.createElement('tr')
+          tr.innerHTML = `<tr>
+                     <td>
+                      ${ncomp}
+                     </td> 
+                     <td>
+                      ${value.fechaInicio.slice(11,19) + " AM"}
+                     </td> 
+                  </tr>`
+          tbody.appendChild(tr);
+        });
+
+
+      }
+    });
+});
+}
+</script>

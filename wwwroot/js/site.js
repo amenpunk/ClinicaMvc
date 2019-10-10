@@ -9,124 +9,114 @@ var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
 var yyyy = today.getFullYear();
 
 
-var dateS = yyyy+"-"+mm+"-"+dd+"T00:00:00"
-var dateF = yyyy+"-"+mm+"-"+dd+"T12:59:59"
+var dateS = yyyy + "-" + mm + "-" + dd + "T00:00:00"
+var dateF = yyyy + "-" + mm + "-" + dd + "T12:59:59"
 
 
 var date;
-    date = new Date();
-    date = date.getUTCFullYear() + '-' +
-        ('00' + (date.getUTCMonth()+1)).slice(-2) + '-' +
-        ('00' + date.getUTCDate()).slice(-2) + ' ' + 
-        ('00' + date.getUTCHours()).slice(-2) + ':' + 
-        ('00' + date.getUTCMinutes()).slice(-2) + ':' + 
-        ('00' + date.getUTCSeconds()).slice(-2);
+date = new Date();
+date = date.getUTCFullYear() + '-' +
+  ('00' + (date.getUTCMonth() + 1)).slice(-2) + '-' +
+  ('00' + date.getUTCDate()).slice(-2) + ' ' +
+  ('00' + date.getUTCHours()).slice(-2) + ':' +
+  ('00' + date.getUTCMinutes()).slice(-2) + ':' +
+  ('00' + date.getUTCSeconds()).slice(-2);
 
 
 $('#myModal').on('shown.bs.modal', function () {
   $('#myInput').trigger('focus')
 })
 
-function toggleClass(){
+function toggleClass() {
 
   var valor = document.getElementById("mySelect").value;
- 
-  if(valor == 1){
+
+  if (valor == 1) {
     $('#cobro').removeClass('d-none');
   }
-  else{
+  else {
 
     $('#cobro').addClass('d-none');
-  } 
+  }
 }
 
-function obtenerCie(){
+function obtenerCie() {
 
-  $.getJSON("/js/array.json", 
+  $.getJSON("/js/array.json",
     function (json) {
-        
+
       $.each(json,
         function (key, value) {
-//          $("#cie").append("<option value='" + value.c + "'>" + value.d + "</option>");
-  
+          //          $("#cie").append("<option value='" + value.c + "'>" + value.d + "</option>");
+
+        });
+
     });
-  
-  });
 
 }
 
-$('.message a').click(function(){
-   $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+$('.message a').click(function () {
+  $('form').animate({ height: "toggle", opacity: "toggle" }, "slow");
 });
 
-$.getJSON("/api/PacienteApi",function (res) {
-    $.each(res,
-            function (key, value) {
-                $("#IdPacienteCita").append("<option value='" + value.idPaciente + "'>" + value.primerNombre +" "+ value.segundoNombre + " " + value.primerApellido +" "+ value.segundoApellido + "</option>");
-            });
+$.getJSON("/api/PacienteApi", function (res) {
+  $.each(res,
+    function (key, value) {
+      $("#IdPacienteCita").append("<option value='" + value.idPaciente + "'>" + value.primerNombre + " " + value.segundoNombre + " " + value.primerApellido + " " + value.segundoApellido + "</option>");
+    });
 });
 
 
 var std = $("select option:selected").val();
 
-$("#IdPacienteCita").on('change', function(){
-    std = $(this).find(":selected").val()
+$("#IdPacienteCita").on('change', function () {
+  std = $(this).find(":selected").val()
 });
 
 
-$("#expSec").on('click', function(){
-    $('#tipoExp').empty();
-    $.getJSON("/api/ExpedienteApi/"+std,function (res) {
+$("#expSec").on('click', function () {
+  $('#tipoExp').empty();
+  $.getJSON("/api/ExpedienteApi/" + std, function (res) {
     $.each(res,
-            function (key, value) {
-                $("#tipoExp").append("<option value='" + value.idExpediente + "'>" + value.fechaGen + "</option>");
-            });
-    });
-}); 
+      function (key, value) {
+        $("#tipoExp").append("<option value='" + value.idExpediente + "'>" + value.fechaGen + "</option>");
+      });
+  });
+});
 
 
-$('#nuevoExp').on('click', function(){
-    //var expe = $("#tipoExp option:selected").val();
-    var paci = $("#IdPacienteCita option:selected").val();
-        //alert(expe+ " paciente "+ paci + " fecha : " + date);
-    $.ajax({
-      url : "/api/ExpedienteApi",
-      data: { 
-              IdPaciente: paci,
-              FechaGen: date
-            },
-      type : "POST"
-    }).done(function (result) {
-      if (result != null) {
-        alert("Expediente Generado");
-      }
-      else {
-        alert("Algo Salio Mal");
-        }
-      }).fail(function (xhr, status, error) {  })
+$('#nuevoExp').on('click', function () {
+  //var expe = $("#tipoExp option:selected").val();
+  var paci = $("#IdPacienteCita option:selected").val();
+  //alert(expe+ " paciente "+ paci + " fecha : " + date);
+  $.ajax({
+    url: "/api/ExpedienteApi",
+    data: {
+      IdPaciente: paci,
+      FechaGen: date
+    },
+    type: "POST"
+  }).done(function (result) {
+    if (result != null) {
+      alert("Expediente Generado");
+    }
+    else {
+      alert("Algo Salio Mal");
+    }
+  }).fail(function (xhr, status, error) { })
 });
 
 
 var ciente = $(".ciente")
 
-ciente.each(function(){
-    var op = this;
-    var id = $(this).attr('value');
-    //console.log(id);
-    
-    $.getJSON("/api/PacienteApi/"+id,function (res) {
-        op.innerHTML = res.primerNombre+" " + res.segundoNombre +" "+ res.primerApellido +" "+ res.segundoApellido;
-    });
+ciente.each(function () {
+  var op = this;
+  var id = $(this).attr('value');
+  //console.log(id);
+
+  $.getJSON("/api/PacienteApi/" + id, function (res) {
+    op.innerHTML = res.primerNombre + " " + res.segundoNombre + " " + res.primerApellido + " " + res.segundoApellido;
+  });
 })
 
-$.getJSON("/api/CitaApi/",function (res) {
-    $.each(res,
-            function (key, value) {
-                if( value.fechaInicio >= dateS && value.fechaInicio <= dateF  ){
 
-                  //console.log("fecha cita: " + value.fechaInicio + " fecha de hoy: " + dateS);
-                  console.log("cita:" + value.idCita + " fecha: " + value.fechaInicio + " paciente: " + value.idPaciente)
-                 
-                }  
-            });
-});
