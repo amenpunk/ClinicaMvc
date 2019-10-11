@@ -1,16 +1,16 @@
 // tempust.js, Lean as shit jQuery calendar.
 // 2017 (c) Semirix
 var tempust = {
-    dpm: [31,28,31,30,31,30,31,31,30,31,30,31],
+    dpm: [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
     npm: [
-        "Enero","Febrero","march","april","may","june","july","august",
-        "september","Octubre","Noviembre","december"
+        "Enero", "Febrero", "march", "april", "may", "june", "july", "august",
+        "september", "Octubre", "Noviembre", "december"
     ],
     npd: [
-        "Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"
+        "Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"
     ],
     sds: function (d) {
-        return d.getFullYear()+"/"+(d.getMonth()+1)+"/"+d.getDate();
+        return d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + d.getDate();
     },
     di: function (y, m, o, e) {
         var lmd = {},
@@ -28,22 +28,22 @@ var tempust = {
             return new Date(d.getFullYear(), d.getMonth(), (i - o) % 7).getDay();
         }
 
-        for(var i = tempust.dpm[lm.getMonth()]; offset(lm, i, o) !== 6; i--) {
-            var date = new Date(lm.getFullYear(),lm.getMonth(),i);
+        for (var i = tempust.dpm[lm.getMonth()]; offset(lm, i, o) !== 6; i--) {
+            var date = new Date(lm.getFullYear(), lm.getMonth(), i);
             lmd[i] = {
                 date: date,
                 e: e ? (e[tempust.sds(date)]) : undefined
             };
         }
-        for(var i = 1; i <= tempust.dpm[m]; i++) {
-            var date = new Date(y,m,i);
+        for (var i = 1; i <= tempust.dpm[m]; i++) {
+            var date = new Date(y, m, i);
             tmd[i] = {
                 date: date,
                 e: e ? e[tempust.sds(date)] : undefined
             };
         }
-        for(var i = 1; offset(nm, i, o); i++) {
-            var date = new Date(nm.getFullYear(),nm.getMonth(),i);
+        for (var i = 1; offset(nm, i, o); i++) {
+            var date = new Date(nm.getFullYear(), nm.getMonth(), i);
             nmd[i] = {
                 date: date,
                 e: e ? e[tempust.sds(date)] : undefined
@@ -60,9 +60,9 @@ var tempust = {
     }
 };
 
-(function($) {
-    var def = function(self, data, defaultOption) {
-        if(!self.data(data.toString()))
+(function ($) {
+    var def = function (self, data, defaultOption) {
+        if (!self.data(data.toString()))
             self.data(data.toString(), defaultOption);
     };
 
@@ -74,31 +74,31 @@ var tempust = {
             dateBox = box.children(".dates"),
             weekDay = 1,
 
-        dateInfo = tempust.di(
-            date.getFullYear(),
-            date.getMonth(),
-            dateOffset,
-            self.data().events
-        );
+            dateInfo = tempust.di(
+                date.getFullYear(),
+                date.getMonth(),
+                dateOffset,
+                self.data().events
+            );
 
         dateBox.html("");
 
         loop = function (dates, dayClass) {
             var events = [];
-            for(var day in dates) {
+            for (var day in dates) {
                 var object = $("<div>")
-                .append(day)
-                .addClass("day")
-                .addClass(dayClass ? dayClass : "")
-                .attr("data-date", tempust.sds(dates[day].date))
+                    .append(day)
+                    .addClass("day")
+                    .addClass(dayClass ? dayClass : "")
+                    .attr("data-date", tempust.sds(dates[day].date))
 
                 dateBox.append(object);
 
-                if(dates[day].e) {
+                if (dates[day].e) {
                     object.attr("data-event", true);
                     object.on("click", function () {
                         var element = $(
-                            "[data-event-date='"+$(this).attr("data-date")+"']"
+                            "[data-event-date='" + $(this).attr("data-date") + "']"
                         ).slideToggle();
                     });
                     events.push({
@@ -109,14 +109,14 @@ var tempust = {
 
                 weekDay++;
 
-                if(weekDay > 7) {
+                if (weekDay > 7) {
                     weekDay = 1;
                     events.forEach(function (event) {
                         dateBox.append(
                             $("<div>")
-                            .append(event.details)
-                            .addClass("event")
-                            .attr("data-event-date", event.date)
+                                .append(event.details)
+                                .addClass("event")
+                                .attr("data-event-date", event.date)
                         );
                     });
                     events = [];
@@ -124,10 +124,10 @@ var tempust = {
             }
         }
 
-        for(var i = 0; i < 7; i++) {
+        for (var i = 0; i < 7; i++) {
             dateBox.append(
                 $("<div class='weekday'>")
-                .append(tempust.npd[(i+dateInfo.o)%7].slice(0,3))
+                    .append(tempust.npd[(i + dateInfo.o) % 7].slice(0, 3))
             );
         }
 
@@ -147,8 +147,8 @@ var tempust = {
         self.data("initialised", true);
 
         box = $("<div class='tempust'>")
-        .append($("<div class='header'>"))
-        .append($("<div class='dates'>"));
+            .append($("<div class='header'>"))
+            .append($("<div class='dates'>"));
 
         self.append(box);
 
@@ -156,7 +156,7 @@ var tempust = {
 
         headerBox.append(
             $("<select>")
-            .addClass("year")
+                .addClass("year")
         ).children(".year").on("change", function () {
             self.data().date.setFullYear($(this).val());
             self.trigger({
@@ -170,18 +170,18 @@ var tempust = {
             render(self);
         });
 
-        for(var i = 1900; i <= 2100; i++) {
+        for (var i = 1900; i <= 2100; i++) {
             headerBox.children(".year").append(
                 $("<option>")
-                .append(i)
-                .attr("value", i)
-                .attr("selected", i === date.getFullYear())
+                    .append(i)
+                    .attr("value", i)
+                    .attr("selected", i === date.getFullYear())
             );
         }
 
         headerBox.append(
             $("<select>")
-            .addClass("month")
+                .addClass("month")
         ).children(".month").on("change", function () {
             self.data().date.setMonth($(this).val());
             self.trigger({
@@ -195,37 +195,37 @@ var tempust = {
             render(self);
         });
 
-        for(var i = 0; i < 12; i++) {
+        for (var i = 0; i < 12; i++) {
             headerBox.children(".month").append(
                 $("<option>")
-                .append(tempust.npm[i])
-                .attr("value", i)
-                .attr("selected", i === date.getMonth())
+                    .append(tempust.npm[i])
+                    .attr("value", i)
+                    .attr("selected", i === date.getMonth())
             );
         }
     };
 
-    $.fn.tempust = function(action, data) {
+    $.fn.tempust = function (action, data) {
         var self = this;
 
-        if(Object.prototype.toString.call(action) === "[object Date]") {
+        if (Object.prototype.toString.call(action) === "[object Date]") {
             self.data(action);
             init(self);
             render(self);
         }
 
-        if(action !== null && typeof action === 'object') {
+        if (action !== null && typeof action === 'object') {
             self.data(action);
             init(self);
             render(self);
         }
 
-        if(action === "changeDate") {
+        if (action === "changeDate") {
             self.data("date", data);
             render(self);
         }
 
-        if(action === "setEvents") {
+        if (action === "setEvents") {
             self.data("events", data);
             render(self);
         }
