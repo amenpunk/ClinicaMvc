@@ -26,7 +26,7 @@ create table paciente(
     id_admin int,
 
     CONSTRAINT pk_pa PRIMARY KEY(id_paciente),
-    CONSTRAINT fk_ad FOREIGN KEY(id_admin) REFERENCES admin_login(id_admin),
+    CONSTRAINT fk_ad FOREIGN KEY(id_admin) REFERENCES admin_login(id_admin) ON DELETE CASCADE,
 )
 
 
@@ -39,7 +39,7 @@ create table cita(
     fecha_final DATETIME,
 
     CONSTRAINT pk_ci PRIMARY KEY(id_cita),
-    CONSTRAINT fk_pa FOREIGN KEY(id_paciente) REFERENCES paciente(id_paciente)
+    CONSTRAINT fk_pa FOREIGN KEY(id_paciente) REFERENCES paciente(id_paciente) ON DELETE CASCADE
 )
 
 create table doctor(
@@ -63,7 +63,7 @@ create table expediente(
     fecha_gen date,
     id_paciente int,
     CONSTRAINT pk_exp PRIMARY KEY(id_expediente),
-    CONSTRAINT fk_pac FOREIGN KEY(id_paciente) REFERENCES paciente(id_paciente),
+    CONSTRAINT fk_pac FOREIGN KEY(id_paciente) REFERENCES paciente(id_paciente) ON DELETE CASCADE,
 )
 
 CREATE table consulta(
@@ -80,8 +80,8 @@ CREATE table consulta(
     relacion varchar(50),
 
     CONSTRAINT pk_con PRIMARY KEY(id_consulta),
-    CONSTRAINT fk_doc FOREIGN KEY(id_doctor) REFERENCES doctor(id_doctor),
-    CONSTRAINT fk_exp FOREIGN KEY(id_expediente) REFERENCES expediente(id_expediente)
+    CONSTRAINT fk_doc FOREIGN KEY(id_doctor) REFERENCES doctor(id_doctor) ON DELETE CASCADE,
+    CONSTRAINT fk_exp FOREIGN KEY(id_expediente) REFERENCES expediente(id_expediente) ON DELETE CASCADE,
 )
 
 create table signos(
@@ -98,8 +98,8 @@ create table signos(
     id_consulta int,
     
     CONSTRAINT pk_sig PRIMARY KEY(id_medicion),
-    CONSTRAINT fk_enf FOREIGN KEY(id_enfermera) REFERENCES enfermera(id_enfermera)
-    CONSTRAINT fk_con FOREIGN KEY(id_consulta) REFERENCES consulta(id_consulta)
+    CONSTRAINT fk_enf FOREIGN KEY(id_enfermera) REFERENCES enfermera(id_enfermera) ON DELETE CASCADE
+    CONSTRAINT fk_con FOREIGN KEY(id_consulta) REFERENCES consulta(id_consulta) ON DELETE CASCADE,
 )
 
 
@@ -108,7 +108,7 @@ create table expediente(
     fecha_gen date,
     id_paciente int,
     CONSTRAINT pk_exp PRIMARY KEY(id_expediente),
-    CONSTRAINT fk_pac FOREIGN KEY(id_paciente) REFERENCES paciente(id_paciente)
+    CONSTRAINT fk_pac FOREIGN KEY(id_paciente) REFERENCES paciente(id_paciente) ON DELETE CASCADE
 )
 
 
@@ -127,8 +127,8 @@ create table signos(
     id_consulta int,
 
     CONSTRAINT pk_sig PRIMARY KEY(id_medicion),
-    CONSTRAINT fk_con FOREIGN KEY(id_consulta) REFERENCES consulta(id_consulta),
-    CONSTRAINT fk_enf FOREIGN KEY(id_enfermera) REFERENCES enfermera(id_enfermera)
+    CONSTRAINT fk_con FOREIGN KEY(id_consulta) REFERENCES consulta(id_consulta) ON DELETE CASCADE,
+    CONSTRAINT fk_enf FOREIGN KEY(id_enfermera) REFERENCES enfermera(id_enfermera) ON DELETE CASCADE
 )
 
 
@@ -138,7 +138,7 @@ CREATE TABLE diagnostico(
     id_consulta int,
     
     CONSTRAINT pk_diag PRIMARY KEY(id_diagnostico),
-    CONSTRAINT fk_con FOREIGN KEY (id_consulta) REFERENCES consulta(id_consulta),
+    CONSTRAINT fk_con FOREIGN KEY (id_consulta) REFERENCES consulta(id_consulta) ON DELETE CASCADE,
 )
 
 create table orden_lab(
@@ -146,7 +146,7 @@ create table orden_lab(
     nombre_examen VARCHAR(250),
     id_consulta int,
     CONSTRAINT pk_lab PRIMARY KEY(id_orden),
-    CONSTRAINT fk_cons FOREIGN KEY(id_consulta) REFERENCES consulta(id_consulta),
+    CONSTRAINT fk_cons FOREIGN KEY(id_consulta) REFERENCES consulta(id_consulta) ON DELETE CASCADE,
 )
 
 create table factura(
@@ -155,7 +155,7 @@ create table factura(
     id_expediente int,
     
     CONSTRAINT pk_num PRIMARY KEY(num_factura),
-    CONSTRAINT fk_expd FOREIGN KEY(id_expediente) REFERENCES expediente(id_expediente),
+    CONSTRAINT fk_expd FOREIGN KEY(id_expediente) REFERENCES expediente(id_expediente) ON DELETE CASCADE,
 )
 
 create table detalle_fac(
@@ -166,7 +166,7 @@ create table detalle_fac(
     precio FLOAT
 
     CONSTRAINT pk_det PRIMARY KEY(num_detalle),
-    CONSTRAINT fk_num FOREIGN KEY(num_factura) REFERENCES factura(num_factura),
+    CONSTRAINT fk_num FOREIGN KEY(num_factura) REFERENCES factura(num_factura) ON DELETE CASCADE,
 )
 
 CREATE table receta(
@@ -174,7 +174,7 @@ CREATE table receta(
     id_consulta int,
 
     CONSTRAINT pk_rese PRIMARY KEY(id_receta),
-    CONSTRAINT fk_consulta FOREIGN KEY(id_consulta) REFERENCES consulta(id_consulta),
+    CONSTRAINT fk_consulta FOREIGN KEY(id_consulta) REFERENCES consulta(id_consulta) ON DELETE CASCADE,
 )
 
 create table des_receta(
@@ -185,17 +185,17 @@ create table des_receta(
     dosis varchar(250),
 
     CONSTRAINT pk_des PRIMARY KEY(id_descripcion),
-    CONSTRAINT fk_reset FOREIGN KEY(id_receta) REFERENCES receta(id_receta),
+    CONSTRAINT fk_reset FOREIGN KEY(id_receta) REFERENCES receta(id_receta) ON DELETE CASCADE,
 )
 
 CREATE PROCEDURE [dbo].[Login]   
- @username varchar(250),  
- @password varchar(250)  
+    @username varchar(250),  
+    @password varchar(250)  
 AS  
 BEGIN  
- SELECT * 
- FROM admin_login 
- WHERE email = @username  
- AND pass = @password  
+    SELECT * 
+    FROM admin_login 
+    WHERE email = @username  
+    AND pass = @password  
 END  
  
