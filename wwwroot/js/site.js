@@ -128,7 +128,6 @@ $.getJSON("/api/DoctorApi", function (res) {
 });
 
 var expa = document.getElementById('expa')
-var nombre = ""
 $.getJSON("/api/ExpedienteApi/", function (res) {
   $.each(res,
     function (key, value) {
@@ -136,8 +135,8 @@ $.getJSON("/api/ExpedienteApi/", function (res) {
       id = value.idPaciente;
       $.getJSON("/api/PacienteApi/" + id, function (res) {
         //console.log("value:" + value.fechaGen + " " + res.primerNombre + " " + res.segundoNombre + " " + res.primerApellido + " " + res.segundoApellido);
-        nombre = value.fechaGen + " " + res.primerNombre + " " + res.segundoNombre + " " + res.primerApellido + " " + res.segundoApellido
-        $("#expa").append("<option value='" + res.idExpediente + "'>" + nombre + "</option>");
+        nombre = value.fechaGen.substr(0,10) + "-" + res.primerNombre + " " + res.segundoNombre + " " + res.primerApellido + " " + res.segundoApellido
+        $("#expa").append("<option value='" + value.idExpediente + "'>" + nombre + "</option>");
         //expa.options[x] = "value:"+ value.fechaGen+" " + res.primerNombre + " " + res.segundoNombre + " " + res.primerApellido + " " + res.segundoApellido;
       });
 

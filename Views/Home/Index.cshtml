@@ -124,7 +124,7 @@ $.getJSON("/api/CitaApi/", function (res) {
                       ${ncomp}
                      </td> 
                      <td>
-                      ${value.fechaInicio.slice(11,19) + " AM"}
+                      ${"De " + value.fechaInicio.slice(11,19) + " AM - " + value.fechaFinal.slice(11,19) + "AM"}
                      </td> 
                   </tr>`
           tbody.appendChild(tr);
