@@ -120,3 +120,27 @@ ciente.each(function () {
 })
 
 
+$.getJSON("/api/DoctorApi", function (res) {
+  $.each(res,
+    function (key, value) {
+      $("#IdDocCon").append("<option value='" + value.idDoctor + "'>" + value.nombre + "</option>");
+    });
+});
+
+var expa = document.getElementById('expa')
+var nombre = ""
+$.getJSON("/api/ExpedienteApi/", function (res) {
+  $.each(res,
+    function (key, value) {
+      //console.log(value.idPaciente)
+      id = value.idPaciente;
+      $.getJSON("/api/PacienteApi/" + id, function (res) {
+        //console.log("value:" + value.fechaGen + " " + res.primerNombre + " " + res.segundoNombre + " " + res.primerApellido + " " + res.segundoApellido);
+        nombre = value.fechaGen + " " + res.primerNombre + " " + res.segundoNombre + " " + res.primerApellido + " " + res.segundoApellido
+        $("#expa").append("<option value='" + res.idExpediente + "'>" + nombre + "</option>");
+        //expa.options[x] = "value:"+ value.fechaGen+" " + res.primerNombre + " " + res.segundoNombre + " " + res.primerApellido + " " + res.segundoApellido;
+      });
+
+    });
+});
+
