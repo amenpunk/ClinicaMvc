@@ -38,11 +38,12 @@ a.navbar-brand {
 }
 
 /* Sticky footer styles
--------------------------------------------------- */
 * {
   font-size: 13px !important;
   font-family: 'Fira Sans', sans-serif;
 }
+
+-------------------------------------------------- */
 
 @media (min-width: 768px) {
   html {
