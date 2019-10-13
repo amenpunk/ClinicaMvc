@@ -5,36 +5,20 @@
 <hr>
 
 <div class="tab row">
-  <button class="col tablinks" onclick="openCity(event, 'lab')">Ordenes De laboratorio</button>
-  <button class="col tablinks" onclick="openCity(event, 'diag')">Diagnostico</button>
-  <button class="col tablinks" onclick="openCity(event, 'rece')">Recetas</button>
-  <button class="col tablinks" onclick="openCity(event, 'sig')">Signos Vitales</button>
+  <button class="col tablinks" onclick="openCity(event, 'lab')"><i class="fas fa-vials"></i> Ordenes De laboratorio</button>
+  <button class="col tablinks" onclick="openCity(event, 'diag')"><i class="fas fa-stethoscope"></i> Diagnostico</button>
+  <button class="col tablinks" onclick="openCity(event, 'rece')"><i class="fas fa-file-medical-alt"></i> Recetas</button>
+  <button class="col tablinks" onclick="openCity(event, 'sig')"><i class="fas fa-weight"></i> Signos Vitales</button>
 </div>
 
 
 <div id="lab" class="tabcontent">
 <h4>Agregar Nuevo Examen</h4>
 
-<!--
-<div class="row">
-    <div class="col-md-4">
-        <form action="#">
-
-            <div class="form-group">
-                <label class="control-label">Nombre:</label>
-                <input id="dire" class="form-control" />
-
-            </div>
-            <div class="form-group">
-                <input type="submit" value="1" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-    -->
-    
     <div class="form-group">
         <input required placeholder="Nombre del examen" id="dire" class="form-control" />
     </div>
+
     <div class="form-group">
       <button class="btn btn-danger" id="agregarEx">Agregar</button> 
     </div>
@@ -48,16 +32,43 @@
       <tbody id="bexam" >
       </tbody>
     </table>
+
     <div class="form-group">
       <button class="btn btn-success" id="saveTable">Guardar</button> 
     </div>
-</div>
 
 </div>
 
 <div id="diag" class="tabcontent">
-  <h3>Diagnostico</h3>
-  <p>Paris is the capital of France.</p> 
+
+  <div class="row">
+    <div class="col">
+      <h3>Diagnostico</h3>
+
+        <div class="form-group">
+            <select id="cie" class="form-control"></select>
+        </div>
+  
+        <div class="form-group">
+          <button class="btn btn-danger" id="agregarDiag">Agregar</button> 
+        </div>
+        <!---table --->
+        <table class="table">
+          <thead thead="">
+              <tr>
+                <th>Enfermedad</th>
+              </tr>
+          </thead>
+          <tbody id="biag" >
+          </tbody>
+        </table>
+
+    <div class="form-group">
+      <button class="btn btn-success" id="saveDiag">Guardar</button> 
+    </div>
+
+    </div>
+  </div>
 </div>
 
 <div id="rece" class="tabcontent">

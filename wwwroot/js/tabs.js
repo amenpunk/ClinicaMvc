@@ -1,3 +1,13 @@
+$.getJSON("/js/array.json",
+	function (json) {
+
+		$.each(json,
+			function (key, value) {
+				$("#cie").append("<option value='" + value.c + "'>" + value.d + "</option>");
+			});
+	});
+
+
 function openCity(evt, cityName) {
 	var i, tabcontent, tablinks;
 	tabcontent = document.getElementsByClassName("tabcontent");
@@ -50,6 +60,7 @@ btn.onclick = function () {
 }
 
 var sva = document.getElementById('saveTable')
+
 sva.onclick = function () {
 
 	todos.forEach(element => {
@@ -70,4 +81,69 @@ sva.onclick = function () {
 			}
 		}).fail(function (xhr, status, error) { })
 	});
+	todos = [];
+}
+
+
+
+//cargar la tabla de diagnostico
+$.getJSON("/api/DiagnosticoApi/" + idcuen, function (res) {
+	$.each(res,
+		function (key, value) {
+			//console.log(value)
+			//console.log(getCie(value.idCie))
+			var tbody = document.getElementById('biag');
+			var tr = document.createElement('tr')
+			tr.innerHTML = `<tr>
+    		   <td>
+				${value.idCie}
+				
+				
+    		   </td> 
+    		</tr>`
+			tbody.appendChild(tr);
+
+		});
+});
+
+var enf = [];
+$('#agregarDiag').on('click', function () {
+	var paci = $("#cie option:selected").val();
+	//console.log(paci)
+	var tbody = document.getElementById('biag');
+	var tr = document.createElement('tr')
+	tr.innerHTML = `<tr>
+    		   <td>
+    		    ${paci}
+    		   </td> 
+    		</tr>`
+	tbody.appendChild(tr);
+	enf.push(paci)
+	console.log(enf)
+
+});
+
+diagsave = document.getElementById('saveDiag')
+
+diagsave.onclick = function () {
+
+	enf.forEach(element => {
+
+		$.ajax({
+			url: "/api/DiagnosticoApi",
+			data: {
+				idConsulta: idcuen,
+				idCie: element
+			},
+			type: "POST"
+		}).done(function (result) {
+			if (result != null) {
+				alert("Registro guardado");
+			}
+			else {
+				alert("Algo Salio Mal");
+			}
+		}).fail(function (xhr, status, error) { })
+	});
+	todos = [];
 }
