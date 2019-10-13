@@ -1,0 +1,36 @@
+
+<link rel="stylesheet" href="~/css/tab.css"> 
+
+
+<h1>Detalle Consulta</h1>
+<h2>Consulta: @ViewData["ident"]</h2>
+<hr>
+
+<div class="tab row">
+  <button class="col tablinks" onclick="openCity(event, 'lab')">Ordenes De laboratorio</button>
+  <button class="col tablinks" onclick="openCity(event, 'diag')">Diagnostico</button>
+  <button class="col tablinks" onclick="openCity(event, 'rece')">Recetas</button>
+  <button class="col tablinks" onclick="openCity(event, 'sig')">Signos Vitales</button>
+</div>
+
+<div id="lab" class="tabcontent">
+  <h3>London</h3>
+  <p>London is the capital city of England.</p>
+</div>
+
+<div id="diag" class="tabcontent">
+  <h3>Paris</h3>
+  <p>Paris is the capital of France.</p> 
+</div>
+
+<div id="rece" class="tabcontent">
+  <h3>Tokyo</h3>
+  <p>Tokyo is the capital of Japan.</p>
+</div>
+
+<div id="sig" class="tabcontent">
+  <h3>Tokyo</h3>
+  <p>Tokyo is the capital of Japan.</p>
+</div>
+
+<script src="~/js/tabs.js" asp-append-version="true"></script>

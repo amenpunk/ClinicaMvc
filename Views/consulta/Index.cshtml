@@ -45,7 +45,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.MontoCaja)
             </th>
-            <th  >Operacion</th>
+            <th> Operacion</th>
         </tr>
     </thead>
     <tbody>
@@ -77,10 +77,10 @@
             <td>
                 @Html.DisplayFor(modelItem => item.MontoCaja)
             </td>
-            <td class="btn-group">
-                <a class="btn btn-info btn-responsive" asp-action="Edit" asp-route-id="@item.IdConsulta">Edit</a>
-                <a class="btn btn-info btn-responsive" asp-action="Details" asp-route-id="@item.IdConsulta">Detalles Consulta</a>
-                <a class="btn btn-info btn-responsive" asp-action="Delete" asp-route-id="@item.IdConsulta">Delete</a>
+            <td class="btn-group flex-wrap">
+                <a class="btn btn-success" asp-action="Edit" asp-route-id="@item.IdConsulta">Edit</a>
+                <a class="btn btn-warning" asp-action="Detalles" asp-route-id="@item.IdConsulta">Detalles Consulta</a>
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.IdConsulta">Delete</a>
             </td>
         </tr>
 }

@@ -27,6 +27,13 @@ namespace Clinica.Controllers
             var clinicaContext = _context.Consulta.Include(c => c.IdDoctorNavigation).Include(c => c.IdExpedienteNavigation);
             return View(await clinicaContext.ToListAsync());
         }
+        
+        public async Task<IActionResult> Detalles(int id)
+        {
+
+            ViewData["ident"] = id;
+            return View();
+        }
 
         // GET: consulta/Details/5
         public async Task<IActionResult> Details(int? id)
