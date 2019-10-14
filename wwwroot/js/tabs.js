@@ -32,8 +32,9 @@ $.getJSON("/api/OrdenLabApi/" + idcuen, function (res) {
 			var tbody = document.getElementById('bexam');
 			var tr = document.createElement('tr')
 			tr.innerHTML = `<tr>
-    		   <td>
-    		    ${value.nombreExamen}
+    		   <td >
+				${value.nombreExamen}
+				<a style="float:right" href="/OrdenLab/Delete/${value.idOrden}"><i class="fas fa-minus-circle"></i></a>
     		   </td> 
     		</tr>`
 			tbody.appendChild(tr);
@@ -97,7 +98,7 @@ $.getJSON("/api/DiagnosticoApi/" + idcuen, function (res) {
 			tr.innerHTML = `<tr>
     		   <td>
 				${value.idCie}
-				
+				<a style="float:right" href="/Diagnostico/Delete/${value.idDiagnostico}"><i class="fas fa-minus-circle"></i></a>
 				
     		   </td> 
     		</tr>`

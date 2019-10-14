@@ -17,8 +17,9 @@ body {font-family: Arial;}
   border: none;
   outline: none;
   cursor: pointer;
-  padding: 1%;
   transition: 0.3s;
+  padding-bottom: 5px;
+  padding-top: 5px;
   
 }
 
@@ -37,6 +38,7 @@ body {font-family: Arial;}
 /* Style the tab content */
 .tabcontent {
   display: none;
+  background-color: whitesmoke;
   padding-top: 3%; 
   height: 100%;
   border-top: none;
