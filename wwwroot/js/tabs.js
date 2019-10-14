@@ -148,3 +148,47 @@ diagsave.onclick = function () {
 	});
 	todos = [];
 }
+
+//cargar el select
+$.getJSON("/api/RecetaApi/" + idcuen, function (res) {
+	$.each(res,
+		function (key, value) {
+			$("#receta").append("<option value='" + value.idReceta + "'>" + "consul-" + value.idConsulta + "-rec-" + value.idReceta + "</option>");
+		});
+});
+
+//generar new
+$('#genew').on('click', function () {
+	
+	$.ajax({
+		url: "/api/RecetaApi",
+		data: {
+			idConsulta: idcuen,
+		},
+		type: "POST"
+	}).done(function (result) {
+		if (result != null) {
+			alert("Receta Generada");
+			$('#receta').empty()
+			$.getJSON("/api/RecetaApi/" + idcuen, function (res) {
+				$.each(res,
+					function (key, value) {
+						$("#receta").append("<option value='" + value.idReceta + "'>" + "consul-" + value.idConsulta + "-rec-" + value.idReceta + "</option>");
+					});
+			});
+			
+		}
+		else {
+			alert("Algo Salio Mal");
+		}
+	}).fail(function (xhr, status, error) { })
+
+});
+
+//selecionar segun seleccionado
+$('#selecres').on('click', function () {
+	var receta = $("#receta option:selected").val();
+	console.log(receta)
+});
+
+
