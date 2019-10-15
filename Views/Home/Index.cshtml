@@ -61,9 +61,12 @@
         <div id="tempust"></div>
 
         <script>
-          var primera = []
+          var primera = ({
+            "2019/10/11": $("<div>Event on today as well!</div>"),
+          })
+
           var obje = ({
-          "2019-10-12": $("<div>Event on today!</div>"),
+          "2019/10/12": $("<div>Event on today!</div>"),
           "2019/10/11": $("<div>Event on today as well!</div>"),
           "2019/10/10": $("<div>jQueryScript Event</div>")
 
@@ -72,21 +75,32 @@
           var obj =$.getJSON("/api/CitaApi/", function (res) {
              $.each(res,
                   function (key, value) {
-                      primera.push ({"id": value.idPaciente, "fecha": value.fechaInicio})
+                    var id = value.idPaciente
+                    var nombre;
+                    $.getJSON("/api/PacienteApi/" + id, function (res) {
+                           nombre = res.primerNombre + " " + res.segundoNombre + " " + res.primerApellido + " " + res.segundoApellido;
+                     
+
+                      var a = value.fechaInicio.substr(0,4)
+                      var b = value.fechaInicio.substr(5,2)
+                      var c = value.fechaInicio.substr(8,2)
+                      var com = a+"/"+b+"/"+c;
+                      var inside = "<div>"+nombre+"</div>"
+                      primera[com] = inside;
+                    //primera[com] = $("<div>Event on today!</div>")
+                    $("#tempust").tempust("setEvents", primera);
+                    //primera.push ({"id": value.idPaciente, "fecha": value.fechaInicio})
+                        });
                   });
               });
 
+            //console.table(primera)
             //console.log(obje);
-            //console.log(primera)
-            //$.each(primera, function(key,value){
-            //      console.log(value.id)
-            //})
             
 
             $("#tempust").tempust({
                 date: new Date("2019/10/10"),
-                offset: 1,
-                
+                offset: 1
             });
           /*
             $("#tempust").on("changeDate", function (event) {
@@ -95,8 +109,11 @@
                 .append("<br/>");
             });
             */
+            //console.log(primera)
+            //console.log(obje)
 
-            $("#tempust").tempust("setEvents", obje);
+            //$("#tempust").tempust("setEvents", obje);
+            //$("#tempust").tempust("setEvents", primera);
 
         </script>
       </div>
