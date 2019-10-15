@@ -120,7 +120,7 @@ $('#agregarDiag').on('click', function () {
     		</tr>`
 	tbody.appendChild(tr);
 	enf.push(paci)
-	console.log(enf)
+	//console.log(enf)
 
 });
 
@@ -159,7 +159,7 @@ $.getJSON("/api/RecetaApi/" + idcuen, function (res) {
 
 //generar new
 $('#genew').on('click', function () {
-	
+
 	$.ajax({
 		url: "/api/RecetaApi",
 		data: {
@@ -176,7 +176,7 @@ $('#genew').on('click', function () {
 						$("#receta").append("<option value='" + value.idReceta + "'>" + "consul-" + value.idConsulta + "-rec-" + value.idReceta + "</option>");
 					});
 			});
-			
+
 		}
 		else {
 			alert("Algo Salio Mal");
@@ -185,10 +185,100 @@ $('#genew').on('click', function () {
 
 });
 
+
+var receta = $("#receta option:selected").val();
 //selecionar segun seleccionado
 $('#selecres').on('click', function () {
-	var receta = $("#receta option:selected").val();
+	receta = $("#receta option:selected").val();
+	var btnmod = document.getElementById('btnmodal')
+	btnmod.classList.remove("btn-novi");
 	console.log(receta)
+	//traer de la api la lista de medicamentos
+	https://localhost:5001/api/DescripcionRecetaApi
+	$.getJSON("/api/DescripcionRecetaApi/" + receta, function (res) {
+		$.each(res,
+			function (key, value) {
+				//console.log(value)
+
+				var tbody = document.getElementById('boceta');
+				var tr = document.createElement('tr')
+				tr.innerHTML = `<tr>
+    		   <td >
+				${value.medicamento}
+			   </td>
+			   <td >
+				${value.cantidad}
+			   </td> 
+			   <td >
+				${value.dosis}
+				<a style="float:right" href="/DescripcionReceta/Delete/${value.idDescripcion}"><i class="fas fa-minus-circle"></i></a>
+    		   </td> 
+    		</tr>`
+				tbody.appendChild(tr);
+
+			});
+	});
+
+
 });
+
+/// agregar desde la modal
+var medica = [];
+$('#addMedi').on('click', function () {
+	//var paci = $("#cie option:selected").val();
+	var medi = document.getElementById('medi').value
+	var cant = document.getElementById('cant').value
+	var dosi = document.getElementById('dosi').value
+	//console.log(paci)
+	var obj = ({"medicamento": medi, "cantidad" : cant, "dosis": dosi})
+	var tbody = document.getElementById('boceta');
+	var tr = document.createElement('tr')
+	tr.innerHTML = `<tr>
+    		   <td>
+    		    ${medi}
+			   </td>
+			   <td>
+    		    ${cant}
+			   </td> 
+			   <td>
+    		    ${dosi}
+    		   </td> 
+    		</tr>`
+	tbody.appendChild(tr);
+	medica.push(obj)
+	alert("Registro agregado a la tabla");
+	$("#medi").val('');
+	$("#cant").val('');
+	$("#dosi").val('');
+});
+
+var saveMedi = document.getElementById('saveMedi');
+
+saveMedi.onclick = function () {
+
+	medica.forEach(element => {
+		
+		$.ajax({
+			url: "/api/DescripcionRecetaApi",
+			data: {
+				idReceta: receta,
+				medicamento: element["medicamento"],
+				cantidad: element["cantidad"],
+				dosis: element["dosis"],
+			},
+			type: "POST"
+		}).done(function (result) {
+			if (result != null) {
+				alert("Registro guardado");
+			}
+			else {
+				alert("Algo Salio Mal");
+			}
+		}).fail(function (xhr, status, error) { })
+	});
+	
+	medica = [];
+	//console.log(element["medicamento"])	
+}
 
 

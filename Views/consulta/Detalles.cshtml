@@ -77,7 +77,7 @@
         <select id="receta" class="form-control"></select>
     </div>
     <div class="btn-group">
-      <button class="btn btn-success" id="selecres">Seleccionar</button> 
+      <button class="btn btn-primary" id="selecres">Seleccionar</button> 
       <button class="btn btn-secondary" id="genew">Generar Nuevo</button> 
     </div>
 
@@ -85,7 +85,7 @@
  <br> 
 
   <div class="form-group">
-      <button data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-primary">Agregar Médicamento</button>
+      <button id="btnmodal" data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-primary btn-novi">Agregar Médicamento</button>
   </div>
 
   <table class="table table-sm">
@@ -99,6 +99,12 @@
       <tbody id="boceta" >
       </tbody>
   </table>
+
+    <div class="form-group">
+      <button class="btn btn-success" id="saveMedi">Guardar</button> 
+    </div>
+
+
 
         <!-- Modal -->
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -114,27 +120,24 @@
                 <form action="#">
                 <div class="form-group">
                     <label class="control-label">Medicamento</label>
-                    <input type="text"  class="form-control">
+                    <input id="medi" type="text"  class="form-control">
                 </div>
 
                 <div class="form-group">
                     <label class="control-label">Cantidad</label>
-                    <input type="number" class="form-control">
+                    <input id="cant" type="number" class="form-control">
                 </div>
                 
                 <div class="form-group">
                     <label class="control-label">Dosis</label>
-                    <input type="text" class="form-control">
+                    <input id="dosi" type="text" class="form-control">
                 </div>
 
-                <div class="form-group">
-                    <input type="submit" class="btn btn-danger" value="Agregar">
-                </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Agregar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button id="addMedi" type="button" class="btn btn-primary">Agregar</button>
             </div>
             </div>
         </div>
