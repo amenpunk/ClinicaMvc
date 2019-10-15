@@ -49,15 +49,19 @@ var dire = document.getElementById('dire');
 var todos = [];
 btn.onclick = function () {
 	//console.log(dire.value)
-	var tbody = document.getElementById('bexam');
-	var tr = document.createElement('tr')
-	tr.innerHTML = `<tr>
+	if (dire.value != '') {
+		var tbody = document.getElementById('bexam');
+		var tr = document.createElement('tr')
+		tr.innerHTML = `<tr>
     		   <td>
     		    ${dire.value}
     		   </td> 
     		</tr>`
-	tbody.appendChild(tr);
-	todos.push(dire.value)
+		tbody.appendChild(tr);
+		todos.push(dire.value)
+	} else {
+		alert("Registro en blanco");
+	}
 	//console.log(todos)
 }
 
@@ -65,25 +69,33 @@ var sva = document.getElementById('saveTable')
 
 sva.onclick = function () {
 
-	todos.forEach(element => {
+	console.log(dire)
+	if (todos.length != 0) {
+		todos.forEach(element => {
 
-		$.ajax({
-			url: "/api/OrdenLabApi",
-			data: {
-				idConsulta: idcuen,
-				nombreExamen: element
-			},
-			type: "POST"
-		}).done(function (result) {
-			if (result != null) {
-				alert("Registro guardado");
-			}
-			else {
-				alert("Algo Salio Mal");
-			}
-		}).fail(function (xhr, status, error) { })
-	});
-	todos = [];
+			$.ajax({
+				url: "/api/OrdenLabApi",
+				data: {
+					idConsulta: idcuen,
+					nombreExamen: element
+				},
+				type: "POST"
+			}).done(function (result) {
+				if (result != null) {
+					alert("Registro guardado");
+				}
+				else {
+					alert("Algo Salio Mal");
+				}
+			}).fail(function (xhr, status, error) { })
+		});
+		todos = [];
+		location.reload();
+	}
+	else {
+		alert("No hay ningun registro en la tabla");
+	}
+
 }
 
 
@@ -129,25 +141,31 @@ diagsave = document.getElementById('saveDiag')
 
 diagsave.onclick = function () {
 
-	enf.forEach(element => {
+	if (enf.length != 0) {
+		enf.forEach(element => {
 
-		$.ajax({
-			url: "/api/DiagnosticoApi",
-			data: {
-				idConsulta: idcuen,
-				idCie: element
-			},
-			type: "POST"
-		}).done(function (result) {
-			if (result != null) {
-				alert("Registro guardado");
-			}
-			else {
-				alert("Algo Salio Mal");
-			}
-		}).fail(function (xhr, status, error) { })
-	});
-	todos = [];
+			$.ajax({
+				url: "/api/DiagnosticoApi",
+				data: {
+					idConsulta: idcuen,
+					idCie: element
+				},
+				type: "POST"
+			}).done(function (result) {
+				if (result != null) {
+					alert("Registro guardado");
+				}
+				else {
+					alert("Algo Salio Mal");
+				}
+			}).fail(function (xhr, status, error) { })
+		});
+		enf = [];
+		location.reload();
+	}
+	else {
+		alert("No hay ningun registro en la tabla")
+	}
 }
 
 //cargar el select
@@ -190,20 +208,24 @@ $('#genew').on('click', function () {
 var receta = $("#receta option:selected").val();
 //selecionar segun seleccionado
 $('#selecres').on('click', function () {
-	receta = $("#receta option:selected").val();
-	var btnmod = document.getElementById('btnmodal')
-	btnmod.classList.remove("btn-novi");
-	console.log(receta)
-	//traer de la api la lista de medicamentos
-	https://localhost:5001/api/DescripcionRecetaApi
-	$.getJSON("/api/DescripcionRecetaApi/" + receta, function (res) {
-		$.each(res,
-			function (key, value) {
-				//console.log(value)
 
-				var tbody = document.getElementById('boceta');
-				var tr = document.createElement('tr')
-				tr.innerHTML = `<tr>
+
+	receta = $("#receta option:selected").val();
+
+	if (receta != undefined) {
+		var btnmod = document.getElementById('btnmodal')
+		btnmod.classList.remove("btn-novi");
+		console.log(receta)
+		//traer de la api la lista de medicamentos
+		https://localhost:5001/api/DescripcionRecetaApi
+		$.getJSON("/api/DescripcionRecetaApi/" + receta, function (res) {
+			$.each(res,
+				function (key, value) {
+					//console.log(value)
+
+					var tbody = document.getElementById('boceta');
+					var tr = document.createElement('tr')
+					tr.innerHTML = `<tr>
     		   <td >
 				${value.medicamento}
 			   </td>
@@ -215,11 +237,14 @@ $('#selecres').on('click', function () {
 				<a style="float:right" href="/DescripcionReceta/Delete/${value.idDescripcion}"><i class="fas fa-minus-circle"></i></a>
     		   </td> 
     		</tr>`
-				tbody.appendChild(tr);
+					tbody.appendChild(tr);
 
-			});
-	});
-
+				});
+		});
+	}
+	else {
+		alert("No ha seleccionado ninguna receta pruebe generar una nueva");
+	}
 
 });
 
@@ -257,29 +282,35 @@ var saveMedi = document.getElementById('saveMedi');
 
 saveMedi.onclick = function () {
 
-	medica.forEach(element => {
+	if (medica.length != 0) {
+		medica.forEach(element => {
 
-		$.ajax({
-			url: "/api/DescripcionRecetaApi",
-			data: {
-				idReceta: receta,
-				medicamento: element["medicamento"],
-				cantidad: element["cantidad"],
-				dosis: element["dosis"],
-			},
-			type: "POST"
-		}).done(function (result) {
-			if (result != null) {
-				alert("Registro guardado");
-			}
-			else {
-				alert("Algo Salio Mal");
-			}
-		}).fail(function (xhr, status, error) { })
-	});
+			$.ajax({
+				url: "/api/DescripcionRecetaApi",
+				data: {
+					idReceta: receta,
+					medicamento: element["medicamento"],
+					cantidad: element["cantidad"],
+					dosis: element["dosis"],
+				},
+				type: "POST"
+			}).done(function (result) {
+				if (result != null) {
+					alert("Registro guardado");
+				}
+				else {
+					alert("Algo Salio Mal");
+				}
+			}).fail(function (xhr, status, error) { })
+		});
 
-	medica = [];
-	//console.log(element["medicamento"])	
+		medica = [];
+		//console.log(element["medicamento"])	
+		location.reload();
+	} else {
+
+		alert("No hay ningun registro en la tabla")
+	}
 }
 
 var toUP
