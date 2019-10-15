@@ -28,7 +28,7 @@ namespace Clinica.Controllers
             return View(await clinicaContext.ToListAsync());
         }
         
-        public async Task<IActionResult> Detalles(int id)
+        public IActionResult Detalles(int id)
         {
 
             ViewData["ident"] = id;

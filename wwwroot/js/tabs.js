@@ -1,3 +1,4 @@
+/*
 $.getJSON("/js/array.json",
 	function (json) {
 
@@ -6,7 +7,7 @@ $.getJSON("/js/array.json",
 				$("#cie").append("<option value='" + value.c + "'>" + value.d + "</option>");
 			});
 	});
-
+*/
 
 function openCity(evt, cityName) {
 	var i, tabcontent, tablinks;
@@ -230,7 +231,7 @@ $('#addMedi').on('click', function () {
 	var cant = document.getElementById('cant').value
 	var dosi = document.getElementById('dosi').value
 	//console.log(paci)
-	var obj = ({"medicamento": medi, "cantidad" : cant, "dosis": dosi})
+	var obj = ({ "medicamento": medi, "cantidad": cant, "dosis": dosi })
 	var tbody = document.getElementById('boceta');
 	var tr = document.createElement('tr')
 	tr.innerHTML = `<tr>
@@ -257,7 +258,7 @@ var saveMedi = document.getElementById('saveMedi');
 saveMedi.onclick = function () {
 
 	medica.forEach(element => {
-		
+
 		$.ajax({
 			url: "/api/DescripcionRecetaApi",
 			data: {
@@ -276,9 +277,66 @@ saveMedi.onclick = function () {
 			}
 		}).fail(function (xhr, status, error) { })
 	});
-	
+
 	medica = [];
 	//console.log(element["medicamento"])	
 }
+
+var toUP
+$('#btn-signos').on('click', function () {
+
+	$.getJSON("/api/SignosApi/" + idcuen, function (res) {
+		//console.table(res);
+		$.each(res,
+			function (key, value) {
+				$('#idmedicamento').html(value.idMedicion)
+				toUP = value.idMedicion
+				$('#est').val(value.estatura)
+				$('#pes').val(value.peso)
+				$('#temp').val(value.temp)
+				$('#pul').val(value.pulso)
+				$('#art').val(value.presionArt)
+				$('#card').val(value.frecCardiaca)
+				$('#respi').val(value.frecRespiratoria)
+			});
+	});
+
+});
+
+$('#actuSig').on('click', function () {
+	var a = $('#est').val()
+	var b = $('#pes').val()
+	var c = $('#temp').val()
+	var d = $('#pul').val()
+	var e = $('#art').val()
+	var f = $('#card').val()
+	var g = $('#respi').val()
+
+
+	$.ajax({
+		type: "POST",
+
+		url: "/api/SignosApi",
+		data: {
+			idMedicion: toUP,
+			Estatura: a,
+			Peso: b,
+			Temp: c,
+			Pulso: d,
+			PresionArt: e,
+			FrecCardiaca: f,
+			FrecRespiratoria: g,
+			IdConsulta: idcuen
+		}
+	}).done(function (result) {
+		if (result != null) {
+			alert("Registro Actualizado");
+		}
+		else {
+			alert("Algo Salio Mal");
+		}
+	}).fail(function (xhr, status, error) { })
+
+});
 
 
