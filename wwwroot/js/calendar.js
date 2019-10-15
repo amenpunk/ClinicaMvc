@@ -233,3 +233,26 @@ var tempust = {
         return self;
     };
 }(jQuery));
+
+
+/*
+function CreaDiv() {
+    //creamos el contenedor del div que es otro div
+    var divContenedor = document.createElement("div");
+    divContenedor.setAttribute("class", "event");
+    divContenedor.setAttribute("data-event-date", "2019/10/11");
+    //divContenedor.setAttribute("style", "display: none;");
+
+    //agrego al final del body mi div               
+    document.querySelector('#tempust > div > div.dates').appendChild(divContenedor);
+
+    //creamos el div hijo, el que va a mostrar los resultados
+    var divHijo = document.createElement("div");
+    divHijo.innerHTML = "Otro Evento"
+    //se supone que estoy adhiriendo el div hijo al padre
+    divContenedor.appendChild(divHijo);
+    console.log($("#tempust"))
+
+}
+
+*/

@@ -79,7 +79,7 @@ $('#nuevoExp').on('click', function () {
     url: "/api/ExpedienteApi",
     data: {
       IdPaciente: paci,
-      FechaGen: date
+      FechaGen: dateS
     },
     type: "POST"
   }).done(function (result) {

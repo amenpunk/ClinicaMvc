@@ -61,8 +61,13 @@
         <div id="tempust"></div>
 
         <script>
-        
           var primera = []
+          var obje = ({
+          "2019-10-12": $("<div>Event on today!</div>"),
+          "2019/10/11": $("<div>Event on today as well!</div>"),
+          "2019/10/10": $("<div>jQueryScript Event</div>")
+
+          })
 
           var obj =$.getJSON("/api/CitaApi/", function (res) {
              $.each(res,
@@ -71,20 +76,17 @@
                   });
               });
 
-            //console.log(primera);
-            //console.table(primera)
+            //console.log(obje);
+            //console.log(primera)
             //$.each(primera, function(key,value){
             //      console.log(value.id)
             //})
             
-            console.log(primera)            
 
             $("#tempust").tempust({
                 date: new Date("2019/10/10"),
                 offset: 1,
-                events: {
-                    "2019/10/10": $("<div>jQueryScript Event</div>")
-                }
+                
             });
           /*
             $("#tempust").on("changeDate", function (event) {
@@ -93,6 +95,9 @@
                 .append("<br/>");
             });
             */
+
+            $("#tempust").tempust("setEvents", obje);
+
         </script>
       </div>
 
@@ -100,7 +105,6 @@
 <script>
 
 window.onload = function() {
-
 
 $.getJSON("/api/CitaApi/", function (res) {
 
@@ -134,7 +138,6 @@ $.getJSON("/api/CitaApi/", function (res) {
       }
     });
 });
-
 
 }
 </script>
