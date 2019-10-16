@@ -94,43 +94,13 @@ create table signos(
     frec_cardiaca FLOAT,
     frec_respiratoria FLOAT,
     id_enfermera int,
-    fecha date
+    fecha date,
     id_consulta int,
     
     CONSTRAINT pk_sig PRIMARY KEY(id_medicion),
-    CONSTRAINT fk_enf FOREIGN KEY(id_enfermera) REFERENCES enfermera(id_enfermera) ON DELETE CASCADE
+    CONSTRAINT fk_enf FOREIGN KEY(id_enfermera) REFERENCES enfermera(id_enfermera) ON DELETE CASCADE,
     CONSTRAINT fk_con FOREIGN KEY(id_consulta) REFERENCES consulta(id_consulta) ON DELETE CASCADE,
 )
-
-
-create table expediente(
-    id_expediente int IDENTITY(1,1) not null,
-    fecha_gen date,
-    id_paciente int,
-    CONSTRAINT pk_exp PRIMARY KEY(id_expediente),
-    CONSTRAINT fk_pac FOREIGN KEY(id_paciente) REFERENCES paciente(id_paciente) ON DELETE CASCADE
-)
-
-
-
-create table signos(
-    id_medicion int IDENTITY(1,1) not null, 
-    estatura FLOAT,
-    peso FLOAT,
-    temp FLOAT,
-    pulso FLOAT,
-    presion_art FLOAT,
-    frec_cardiaca FLOAT,
-    frec_respiratoria FLOAT,
-    id_enfermera int,
-    fecha date,
-    id_consulta int,
-
-    CONSTRAINT pk_sig PRIMARY KEY(id_medicion),
-    CONSTRAINT fk_con FOREIGN KEY(id_consulta) REFERENCES consulta(id_consulta) ON DELETE CASCADE,
-    CONSTRAINT fk_enf FOREIGN KEY(id_enfermera) REFERENCES enfermera(id_enfermera) ON DELETE CASCADE
-)
-
 
 CREATE TABLE diagnostico(
     id_diagnostico int IDENTITY(1,1) not null,
@@ -138,7 +108,7 @@ CREATE TABLE diagnostico(
     id_consulta int,
     
     CONSTRAINT pk_diag PRIMARY KEY(id_diagnostico),
-    CONSTRAINT fk_con FOREIGN KEY (id_consulta) REFERENCES consulta(id_consulta) ON DELETE CASCADE,
+    CONSTRAINT fk_consuk FOREIGN KEY (id_consulta) REFERENCES consulta(id_consulta) ON DELETE CASCADE,
 )
 
 create table orden_lab(

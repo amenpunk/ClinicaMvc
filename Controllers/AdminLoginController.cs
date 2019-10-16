@@ -145,6 +145,11 @@ namespace Clinica.Controllers {
         }
 
         public async Task<IActionResult> logiar (string correo, string pass) {
+            
+            string userName = HttpContext.User.Identity.Name;
+
+            if( userName == null){
+
 
             var myUser = _context.AdminLogin
                 .FirstOrDefault (u => u.Email == correo &&
@@ -205,6 +210,10 @@ namespace Clinica.Controllers {
             }
             //return View ("~/Views/Home/index.cshtml" );
             return View ("~/Views/home/index.cshtml");
+            }
+            else{
+                return View ("~/Views/home/index.cshtml");
+            }
         }
 
         public IActionResult Logout () {
