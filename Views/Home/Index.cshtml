@@ -61,9 +61,18 @@
         <div id="tempust"></div>
 
         <script>
+        var today = new Date();
+          var dd = String(today.getDate()).padStart(2, '0');
+          var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+          var yyyy = today.getFullYear();
+
+          var dateN = yyyy + "/" + mm + "/" + dd;
+
           var primera = ({
-            "2019/10/11": $("<div>Event on today as well!</div>"),
+             //dateN : $("<div>Event on today as well!</div>"),
+            //"2019/10/11": $("<div>Event on today as well!</div>"),
           })
+          primera[dateN] = '<div><a href="/Home/Index">Hoy es 15<a></div>'
 
           var obje = ({
           "2019/10/12": $("<div>Event on today!</div>"),
@@ -85,7 +94,7 @@
                       var b = value.fechaInicio.substr(5,2)
                       var c = value.fechaInicio.substr(8,2)
                       var com = a+"/"+b+"/"+c;
-                      var inside = "<div>"+nombre+"</div>"
+                      var inside = '<div><a href="/Cita/Details/'+value.idCita+'">'+nombre+'</a></div>'
                       primera[com] = inside;
                     //primera[com] = $("<div>Event on today!</div>")
                     $("#tempust").tempust("setEvents", primera);
@@ -142,7 +151,9 @@ $.getJSON("/api/CitaApi/", function (res) {
           var tr = document.createElement('tr')
           tr.innerHTML = `<tr>
                      <td>
+                     <a href="/Cita/Details/${value.idCita}">
                       ${ncomp}
+                     </a>
                      </td> 
                      <td>
                       ${"De " + value.fechaInicio.slice(11,19) + " AM - " + value.fechaFinal.slice(11,19) + "AM"}

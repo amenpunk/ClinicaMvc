@@ -11,6 +11,7 @@ var yyyy = today.getFullYear();
 
 var dateS = yyyy + "-" + mm + "-" + dd + "T00:00:00"
 var dateF = yyyy + "-" + mm + "-" + dd + "T12:59:59"
+var dateN = yyyy + "/" + mm + "/" + dd;
 
 
 var date;
@@ -121,7 +122,7 @@ $.getJSON("/api/ExpedienteApi/", function (res) {
       id = value.idPaciente;
       $.getJSON("/api/PacienteApi/" + id, function (res) {
         //console.log("value:" + value.fechaGen + " " + res.primerNombre + " " + res.segundoNombre + " " + res.primerApellido + " " + res.segundoApellido);
-        nombre = value.fechaGen.substr(0,10) + "-" + res.primerNombre + " " + res.segundoNombre + " " + res.primerApellido + " " + res.segundoApellido
+        nombre = value.fechaGen.substr(0,10) + "-" + res.primerNombre + " " + res.segundoNombre + " " + res.primerApellido + " " + res.segundoApellido +"-"+value.idExpediente
         $("#expa").append("<option value='" + value.idExpediente + "'>" + nombre + "</option>");
         //expa.options[x] = "value:"+ value.fechaGen+" " + res.primerNombre + " " + res.segundoNombre + " " + res.primerApellido + " " + res.segundoApellido;
       });
