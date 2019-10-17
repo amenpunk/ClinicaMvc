@@ -370,4 +370,30 @@ $('#actuSig').on('click', function () {
 
 });
 
+//cargar la tabla de diagnostico
+$.getJSON("/api/ConsultaApi/" + idcuen, function (res) {
+	$.each(res,
+		function (key, value) {
+			//console.log(value)
+			//console.log(getCie(value.idCie))
+			var tbody = document.getElementById('beta');
+			var tr = document.createElement('tr')
+			tr.innerHTML = `<tr>
+    		   <td>
+				${value.nombre} ${value.nombre2} ${value.apellido} ${value.apellido2}
+			   </td>
+			   <td>
+				${value.idexp}-${value.fechaexp}
+			   </td> 
+			   <td>
+				${value.asunto}
+			   </td> 
+			   <td>
+				Q.${value.monto}.00
+    		   </td> 
+    		</tr>`
+			tbody.appendChild(tr);
+
+		});
+});
 
