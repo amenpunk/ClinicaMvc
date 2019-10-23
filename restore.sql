@@ -62,6 +62,7 @@ create table expediente(
     id_expediente int IDENTITY(1,1) not null,
     fecha_gen date,
     id_paciente int,
+    estado int,
     CONSTRAINT pk_exp PRIMARY KEY(id_expediente),
     CONSTRAINT fk_pac FOREIGN KEY(id_paciente) REFERENCES paciente(id_paciente) ON DELETE CASCADE,
 )
@@ -158,14 +159,4 @@ create table des_receta(
     CONSTRAINT fk_reset FOREIGN KEY(id_receta) REFERENCES receta(id_receta) ON DELETE CASCADE,
 )
 
-CREATE PROCEDURE [dbo].[Login]   
-    @username varchar(250),  
-    @password varchar(250)  
-AS  
-BEGIN  
-    SELECT * 
-    FROM admin_login 
-    WHERE email = @username  
-    AND pass = @password  
-END  
  

@@ -72,14 +72,17 @@
              //dateN : $("<div>Event on today as well!</div>"),
             //"2019/10/11": $("<div>Event on today as well!</div>"),
           })
-          primera[dateN] = '<div><a href="/Home/Index">Hoy es '+dd+'<a></div>'
+          //primera[dateN] = '<div><a href="/Home/Index">Hoy es '+dd+'<a></div>'
+          primera[dateN] = '<div><a href="/Home/Index">No hay citas programadas para hoy<a></div>'
 
+          /*
           var obje = ({
           "2019/10/12": $("<div>Event on today!</div>"),
           "2019/10/11": $("<div>Event on today as well!</div>"),
           "2019/10/10": $("<div>jQueryScript Event</div>")
 
-          })
+          })  
+          */
 
           var obj =$.getJSON("/api/CitaApi/", function (res) {
              $.each(res,
@@ -94,7 +97,7 @@
                       var b = value.fechaInicio.substr(5,2)
                       var c = value.fechaInicio.substr(8,2)
                       var com = a+"/"+b+"/"+c;
-                      var inside = '<div><a href="/Cita/Details/'+value.idCita+'">'+nombre+'</a></div>'
+                      var inside = '<div><a href="/Cita/Details/'+value.idCita+'">'+value.fechaInicio+" "+nombre+'</a></div>'
                       primera[com] = inside;
                     //primera[com] = $("<div>Event on today!</div>")
                     $("#tempust").tempust("setEvents", primera);
