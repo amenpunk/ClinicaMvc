@@ -14,6 +14,7 @@ namespace Clinica.Models
         public int IdExpediente { get; set; }
         public DateTime? FechaGen { get; set; }
         public int? IdPaciente { get; set; }
+        public int? Estado { get; set; }
 
         public virtual Paciente IdPacienteNavigation { get; set; }
         public virtual ICollection<Consulta> Consulta { get; set; }

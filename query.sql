@@ -18,9 +18,9 @@ create procedure sp_detalle
     as 
         insert into detalle_fac(cantidad,nombre_consulta,num_factura,precio)
         select cant,asunto,fac,monto_caja from dbo.join_det(@expe,@fac)
-select * from detalle_fac
-insert into
-select * from detalle_fac
+--select * from detalle_fac
+--insert into
+--select * from detalle_fac
 --exec sp_detalle @fac = 1, @expe = 12
 
 -- jaja este tambien
@@ -30,3 +30,4 @@ AS
 declare @id_fact int = (select IDENT_CURRENT('factura'))
 declare @id_exp int = (select id_expediente from factura where num_factura = @id_fact)
 exec sp_detalle @fac = @id_fact , @expe = @id_exp
+update expediente set estado = 1 where id_expediente = @id_exp

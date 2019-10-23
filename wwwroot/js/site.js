@@ -130,3 +130,10 @@ $.getJSON("/api/ExpedienteApi/", function (res) {
     });
 });
 
+$.getJSON("/api/JoinApi", function (res) {
+  $.each(res,
+    function (key, value) {
+      $("#secreto").append("<option value='" + value.idexp + "'>" + value.nombre + " " + value.nombre2 + " " + value.apellido + " " + value.apellido2+ "-" +value.fechaexp.substr(0,10)+"-"+value.idexp + "</option>");
+    });
+});
+

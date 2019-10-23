@@ -159,4 +159,8 @@ create table des_receta(
     CONSTRAINT fk_reset FOREIGN KEY(id_receta) REFERENCES receta(id_receta) ON DELETE CASCADE,
 )
 
- 
+---querys para reportes 
+
+select * from detalle_fac d inner join
+select nombre_consulta,f.id_expediente from detalle_fac d inner join
+factura f ON d.num_factura = f.num_factura Inner join expediente e ON e.id_expediente = f.id_expediente

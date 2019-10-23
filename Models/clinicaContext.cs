@@ -271,6 +271,8 @@ namespace Clinica.Models {
 
                 entity.Property (e => e.IdExpediente).HasColumnName ("id_expediente");
 
+                entity.Property(e => e.Estado).HasColumnName("estado");
+
                 entity.Property (e => e.FechaGen)
                     .HasColumnName ("fecha_gen")
                     .HasColumnType ("date");
