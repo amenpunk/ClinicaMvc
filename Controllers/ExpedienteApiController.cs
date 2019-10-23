@@ -29,17 +29,18 @@ namespace Clinica.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetExpediente(int id){
+        public  async Task<ActionResult<IEnumerable<Expediente>>>  GetExpediente(int id){
             //var exp = await _context.Expediente.FindAsync(id);
 
             //var exp = await _context.Expediente.Where(a => a.IdPaciente == id);
-            var exp = _context.Expediente.Where(p => p.IdPaciente == id).ToList();
+            var exp = await _context.Expediente.Where(p => p.IdPaciente == id && p.Estado == null).ToListAsync();
 
-            if(exp == null){
-                return NotFound();
-            }
+            //if(exp == null){
+            //    return NotFound();
+            //}
         
-            return Ok(exp);
+            //return Ok(exp);
+            return(exp);
         }
 
         
@@ -50,8 +51,6 @@ namespace Clinica.Controllers
             return CreatedAtAction("GetExpediente", new { id = exp.IdExpediente}, exp);
             //return CreatedAtRoute("GetDocument",doc, null);
         }
-
-
 
     }
 }

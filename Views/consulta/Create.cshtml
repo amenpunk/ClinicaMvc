@@ -13,7 +13,7 @@
 </head>
 <body>
 
-<h4>Consulta</h4>
+<h1>Consulta</h1>
 <hr />
   <div class="row">
   
@@ -21,68 +21,7 @@
     <form class="col" asp-action="Create">
       <div class="row" id="master">
 
-       <div class="col" id="encabezado">
-                <h5 class="h5">Detalles de la Consulta</h5>
-                <div class="form-group">
-                    <label asp-for="IdDoctor" class="control-label">Doctor</label>
-                    <!--form default 
-                    <select asp-for="IdDoctor" class="form-control" asp-items="ViewBag.IdDoctor"></select>
-                    <select asp-for="IdExpediente" class="form-control" asp-items="ViewBag.IdExpediente"></select>
-                    <select id="expa" asp-for="IdExpediente" class="form-control" ></select>
-                    <select id="expa" asp-for="IdExpediente" class="form-control" asp-items="ViewBag.IdExpediente"></select>
-                    -->
-                     <select id="IdDocCon" asp-for="IdDoctor"  class="form-control"></select>
-                    </div>
-                <div class="form-group">
-                    <label asp-for="IdExpediente" class="control-label">Expediente/Paciente</label>
-                    <select id="expa" asp-for="IdExpediente" class="form-control" ></select>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Fecha" class="control-label"></label>
-                    <input asp-for="Fecha" class="form-control" />
-                    <span asp-validation-for="Fecha" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Asunto" class="control-label"></label>
-                    <input asp-for="Asunto" class="form-control" />
-                    <span asp-validation-for="Asunto" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="TipoConsulta" class="control-label">Tipo de Consulta</label>
 
-                    <select asp-for="TipoConsulta" class="form-control">
-                        <option value="En Clinica">En Clinica</option>
-                        <option value="Por Telefono">Por Teléfono</option>
-                        <option value="En Hospital">En Hospital</option>
-                        <option value="A domicilio">A Domicilio</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label asp-for="MontoCaja" class="control-label"></label>
-                    <input asp-for="MontoCaja" class="form-control" />
-                    <span asp-validation-for="MontoCaja" class="text-danger"></span>
-                </div>
-
-
-                <div class="form-group">
-                    <label asp-for="SeguroMedico" class="control-label">Seguro Medico</label>
-                    <select id="mySelect" onchange="toggleClass()" asp-for="SeguroMedico" class="form-control">
-                        <option value="1">Si</option>
-                        <option id="plataforma" value="0" selected>No</option>
-                    </select>
-                </div>
-
-            <div class="form-group">
-                <input type="submit" value="Guardar" class="btn btn-primary" />
-            </div>
-            <div class="form-group">
-                <button asp-action="Index" value="Regresar" class="btn btn-warning" >
-                    Regresar
-                </button>
-            </div>
-
-          </div>
 
           <div id="cobro" class="col-md-4 col-sm-12  d-none">
 
@@ -112,9 +51,125 @@
 
         </div>
 
+       <div class="col" id="encabezado">
+                <h5 class="h5">Detalles de la Consulta</h5>
+
+                <div class="form-group">
+                    <label asp-for="SeguroMedico" class="control-label">Seguro Medico</label>
+                    <select id="mySelect" onchange="toggleClass()" asp-for="SeguroMedico" class="form-control">
+                        <option value="1">Si</option>
+                        <option id="plataforma" value="0" selected>No</option>
+                    </select>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label asp-for="IdDoctor" class="control-label">Doctor</label>
+                    <!--form default 
+                    <select asp-for="IdDoctor" class="form-control" asp-items="ViewBag.IdDoctor"></select>
+                    <select asp-for="IdExpediente" class="form-control" asp-items="ViewBag.IdExpediente"></select>
+                    <select id="expa" asp-for="IdExpediente" class="form-control" ></select>
+                    <select id="expa" asp-for="IdExpediente" class="form-control" asp-items="ViewBag.IdExpediente"></select>
+                    -->
+                     <select id="IdDocCon" asp-for="IdDoctor"  class="form-control"></select>
+                </div>
+
+                <!--agregar la opcion de generar un nuevo expediente-->
+                <div class="form-group">
+                    <a id="expModCit" class="btn btn-info" data-toggle="modal" data-target="#expModaDiv">Generar Nuevo Expediente</a>
+
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="IdExpediente" class="control-label">Expediente/Paciente</label>
+                    <select id="expa" asp-for="IdExpediente" class="form-control" ></select>
+                </div>
+
+
+                <div class="form-group">
+                    <label asp-for="Fecha" class="control-label"></label>
+                    <input asp-for="Fecha" class="form-control" />
+                    <span asp-validation-for="Fecha" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Asunto" class="control-label"></label>
+                    <input asp-for="Asunto" class="form-control" />
+                    <span asp-validation-for="Asunto" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TipoConsulta" class="control-label">Tipo de Consulta</label>
+
+                    <select asp-for="TipoConsulta" class="form-control">
+                        <option value="En Clinica">En Clinica</option>
+                        <option value="Por Telefono">Por Teléfono</option>
+                        <option value="En Hospital">En Hospital</option>
+                        <option value="A domicilio">A Domicilio</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="MontoCaja" class="control-label"></label>
+                    <input asp-for="MontoCaja" class="form-control" />
+                    <span asp-validation-for="MontoCaja" class="text-danger"></span>
+                </div>
+
+
+                
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+            </div>
+            <div class="form-group">
+                <button asp-action="Index" value="Regresar" class="btn btn-warning" >
+                    Regresar
+                </button>
+            </div>
+
+          </div>
+
+
 
       </div><!--end of row of two divs-->
-            
+
+<!-- Modal -->
+<div class="modal fade" id="expModaDiv" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Generar nuevo Expediente</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+            <!--Form to select expediente --->
+            <form action="#">
+            <label>Paciente</label>
+                <select id="IdPacienteCita" class="form-control">
+                <!--
+                <select id="tipoExp" class="form-control">
+                    <option value="UNO">20120312</option>
+                    <option value="UNO">19120939</option>
+                -->
+                </select>
+            </form>
+
+      </div>
+      <div class="modal-footer">
+        <button id="nuevoExp" type="button" class="btn btn-secondary" data-dismiss="modal">Generar Nuevo</button>
+        <!--
+        <button type="button"   class="btn btn-primary">Selecionar</button>
+        -->
+      </div>
+    </div>
+  </div>
+</div>
+<!--end modal-->
+
+
+
+
     </form> 
     </div>
 </body>

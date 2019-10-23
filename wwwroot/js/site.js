@@ -122,9 +122,12 @@ $.getJSON("/api/ExpedienteApi/", function (res) {
       id = value.idPaciente;
       $.getJSON("/api/PacienteApi/" + id, function (res) {
         //console.log("value:" + value.fechaGen + " " + res.primerNombre + " " + res.segundoNombre + " " + res.primerApellido + " " + res.segundoApellido);
+        if(value.estado == null){
+
         nombre = value.fechaGen.substr(0,10) + "-" + res.primerNombre + " " + res.segundoNombre + " " + res.primerApellido + " " + res.segundoApellido +"-"+value.idExpediente
         $("#expa").append("<option value='" + value.idExpediente + "'>" + nombre + "</option>");
         //expa.options[x] = "value:"+ value.fechaGen+" " + res.primerNombre + " " + res.segundoNombre + " " + res.primerApellido + " " + res.segundoApellido;
+        }
       });
 
     });

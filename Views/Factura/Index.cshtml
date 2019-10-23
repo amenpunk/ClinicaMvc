@@ -25,9 +25,11 @@
             <th>
                 Paciente
             </th>
+            <!--
             <th>
                 Operacion
             </th>
+            -->
         </tr>
     </thead>
     <tbody>
@@ -39,11 +41,13 @@
             <td>
                 @Html.DisplayFor(modelItem => item.IdExpedienteNavigation.IdExpediente)
             </td>
+            <!--
             <td>
                 <a asp-action="Edit" asp-route-id="@item.NumFactura" class="btn btn-dark">Edit</a>
                 <a asp-action="Details" asp-route-id="@item.NumFactura" class="btn btn-dark">Details</a>
                 <a asp-action="Delete" asp-route-id="@item.NumFactura" class="btn btn-dark">Delete</a>
             </td>
+            -->
         </tr>
 }
     </tbody>
