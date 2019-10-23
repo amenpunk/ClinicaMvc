@@ -38,7 +38,7 @@
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   outline: 0;
-  background: #4CAF50;
+  background: #4CAF;
   width: 100%;
   border: 0;
   padding: 15px;
@@ -49,15 +49,15 @@
   cursor: pointer;
 }
 .form button:hover,.form button:active,.form button:focus {
-  background: #43A047;
-}
+  background:#4CA;
+  }
 .form .message {
   margin: 15px 0 0;
   color: #b3b3b3;
   font-size: 12px;
 }
 .form .message a {
-  color: #4CAF50;
+  color: #4CAF;
   text-decoration: none;
 }
 .form .register-form {
@@ -98,19 +98,36 @@
 }
 body {
   background: #ffffff; /* fallback for old browsers */
-  background: -webkit-linear-gradient(right, #ffffff, #8DC26F);
-  background: -moz-linear-gradient(right, #ffffff, #8DC26F);
-  background: -o-linear-gradient(right, #ffffff, #8DC26F);
-  background: linear-gradient(to left, #ffffff, #8DC26F);
+  background: -webkit-linear-gradient(right, #ffffff, #1D73A6);
+  background: -moz-linear-gradient(right, #ffffff, #1D73A6);
+  background: -o-linear-gradient(right, #ffffff, #1D73A6);  
+  background: linear-gradient(to left, #ffffff, #1D73A6);
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;      
 }
+
+#logoumg{
+  align-items:center;
+  padding-left:20%;
+  padding-bottom:30px;
+}
+
+body > div > div.form > form.login-form > input[type="submit"]:nth-child(3){
+    background:#CC3433
+}
+
+
         </style>
     </head>
 
      <body>
         <div class="login-page">
+
+          <div>
+            <img id="logoumg" src="~/umg.png">
+          </div>  
+
           <div class="form">
             <form aspcontroller="AdminLogin" asp-action="Logiar"  class="register-form">
               <input type="text" placeholder="name"/>
@@ -120,8 +137,8 @@ body {
               <p class="message">Already registered? <a href="#">Sign In</a></p>
             </form>
             <form  aspcontroller="AdminLogin" asp-action="Logiar" class="login-form">
-              <input type="email" name="correo" placeholder="username"/>
-              <input type="password" name="pass" placeholder="password"/>
+              <input type="email" name="correo" placeholder="Correo"/>
+              <input type="password" name="pass" placeholder="Contraseña"/>
               <input type="submit" value="Ingresar">
             <!--     <p class="message">Not registered? <a href="#">Create an account</a></p> -->
             </form>
