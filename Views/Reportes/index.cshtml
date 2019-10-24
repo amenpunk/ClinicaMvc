@@ -1,0 +1,41 @@
+@{
+    ViewData["Title"] = "Reportes";
+}
+
+<h1>Repoerte de expediente</h1>
+<form action="http://localhost/reportes/pdf.php" method="GET">
+
+    <div class="form-group">
+    <label class="control-label">Paciente</label>
+    <input type="number" class="form-control" name="id_paciente">
+    </div>
+
+    <div class="form-group">
+    <label class="control-label">Expediente</label>
+    <input type="number" class="form-control" name="id_exp">
+    </div>
+
+    <div class="form-group">
+    <input type="submit" class="btn btn-dark"value="Generar Reporte">
+    </div>
+
+</form>
+
+<h1>Reporte de Ganancia</h1>
+<form action="http://localhost/reportes/ganar.php" method="GET">
+
+    <div class="form-group">
+    <label class="control-label">Fecha de inicio</label>
+    <input type="date" class="form-control" name="inicial">
+    </div>
+
+    <div class="form-group">
+    <label class="control-label">Fecha de final</label>
+    <input type="date" class="form-control" name="final">
+    </div>
+
+    <div class="form-group">
+    <input type="submit" class="btn btn-dark"value="Generar Reporte">
+    </div>
+
+</form>

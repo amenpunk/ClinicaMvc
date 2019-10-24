@@ -1,4 +1,4 @@
-/*
+
 $.getJSON("/js/array.json",
 	function (json) {
 
@@ -7,7 +7,7 @@ $.getJSON("/js/array.json",
 				$("#cie").append("<option value='" + value.c + "'>" + value.d + "</option>");
 			});
 	});
-*/
+	
 
 function openCity(evt, cityName) {
 	var i, tabcontent, tablinks;
