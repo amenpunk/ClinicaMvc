@@ -29,12 +29,13 @@ namespace Clinica.Controllers
         }
 
         [HttpGet("{id}")]
-        public  async Task<ActionResult<IEnumerable<Expediente>>>  GetExpediente(int id){
+        public  async Task<ActionResult<IEnumerable<Expediente>>>  GetExpediente(int id,int estado){
             //var exp = await _context.Expediente.FindAsync(id);
 
             //var exp = await _context.Expediente.Where(a => a.IdPaciente == id);
-            var exp = await _context.Expediente.Where(p => p.IdPaciente == id && p.Estado == null).ToListAsync();
 
+            var exp = await _context.Expediente.Where(p => p.IdPaciente == id && p.Estado == estado).ToListAsync();
+        
             //if(exp == null){
             //    return NotFound();
             //}

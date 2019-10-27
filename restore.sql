@@ -62,7 +62,7 @@ create table expediente(
     id_expediente int IDENTITY(1,1) not null,
     fecha_gen date,
     id_paciente int,
-    estado int,
+    estado int DEFAULT 0,
     CONSTRAINT pk_exp PRIMARY KEY(id_expediente),
     CONSTRAINT fk_pac FOREIGN KEY(id_paciente) REFERENCES paciente(id_paciente) ON DELETE CASCADE,
 )
@@ -124,6 +124,7 @@ create table factura(
     num_factura int IDENTITY(1,1) not null,
     fecha date,
     id_expediente int,
+    nit_cliente varchar(250),
     
     CONSTRAINT pk_num PRIMARY KEY(num_factura),
     CONSTRAINT fk_expd FOREIGN KEY(id_expediente) REFERENCES expediente(id_expediente) ON DELETE CASCADE,
@@ -158,9 +159,3 @@ create table des_receta(
     CONSTRAINT pk_des PRIMARY KEY(id_descripcion),
     CONSTRAINT fk_reset FOREIGN KEY(id_receta) REFERENCES receta(id_receta) ON DELETE CASCADE,
 )
-
----querys para reportes 
-
-select * from detalle_fac d inner join
-select nombre_consulta,f.id_expediente from detalle_fac d inner join
-factura f ON d.num_factura = f.num_factura Inner join expediente e ON e.id_expediente = f.id_expediente

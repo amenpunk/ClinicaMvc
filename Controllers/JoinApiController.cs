@@ -32,7 +32,7 @@ namespace Clinica.Controllers
 
             var resu = (from e in _context.Expediente
                  join p in _context.Paciente on e.IdPaciente equals p.IdPaciente
-                 where e.Estado == null
+                 where e.Estado == 0
                  select new {
                      nombre = p.PrimerNombre,
                      nombre2 = p.SegundoNombre,

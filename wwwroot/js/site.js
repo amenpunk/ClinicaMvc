@@ -63,7 +63,7 @@ $("#IdPacienteCita").on('change', function () {
 
 $("#expSec").on('click', function () {
   $('#tipoExp').empty();
-  $.getJSON("/api/ExpedienteApi/" + std, function (res) {
+  $.getJSON("/api/ExpedienteApi/" + std+"?estado=0", function (res) {
     $.each(res,
       function (key, value) {
         $("#tipoExp").append("<option value='" + value.idExpediente + "'>" + value.fechaGen + "</option>");
@@ -80,7 +80,8 @@ $('#nuevoExp').on('click', function () {
     url: "/api/ExpedienteApi",
     data: {
       IdPaciente: paci,
-      FechaGen: dateS
+      FechaGen: dateS,
+      estado:0
     },
     type: "POST"
   }).done(function (result) {
@@ -122,7 +123,7 @@ $.getJSON("/api/ExpedienteApi/", function (res) {
       id = value.idPaciente;
       $.getJSON("/api/PacienteApi/" + id, function (res) {
         //console.log("value:" + value.fechaGen + " " + res.primerNombre + " " + res.segundoNombre + " " + res.primerApellido + " " + res.segundoApellido);
-        if(value.estado == null){
+        if(value.estado == 0){
 
         nombre = value.fechaGen.substr(0,10) + "-" + res.primerNombre + " " + res.segundoNombre + " " + res.primerApellido + " " + res.segundoApellido +"-"+value.idExpediente
         $("#expa").append("<option value='" + value.idExpediente + "'>" + nombre + "</option>");
