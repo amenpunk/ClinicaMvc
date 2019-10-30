@@ -59,16 +59,21 @@ namespace Clinica.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("NumFactura,Fecha,IdExpediente")] Factura factura)
+        public async Task<IActionResult> Create([Bind("NumFactura,Fecha,IdExpediente")] Factura factura, string nit)
         {
+            int? id = factura.IdExpediente;
             if (ModelState.IsValid)
             {
                 _context.Add(factura);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                //return RedirectToAction(nameof(Index));
+                
+                return Redirect("http://localhost/reportes/factura.php?id="+ id+"&nit="+nit);
             }
             ViewData["IdExpediente"] = new SelectList(_context.Expediente, "IdExpediente", "IdExpediente", factura.IdExpediente);
             return View(factura);
+            //return Redirect("http://localhost/reportes/factura.php");
+            //return new RedirectResult("http://localhost/reportes/factura.php");
         }
 
         // GET: Factura/Edit/5
