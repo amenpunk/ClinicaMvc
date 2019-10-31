@@ -13,7 +13,7 @@ var estado = 1;
 $("#paciente").on('change', function () {
   std = $(this).find(":selected").val()
   $('#expSec').empty();
-  $.getJSON("/api/ExpedienteApi/" + std+"?estado="+estado, function (res) {
+  $.getJSON("/api/ExpedienteApi/" + std+"?estado="+3, function (res) {
 
     $.each(res,
       function (key, value) {
