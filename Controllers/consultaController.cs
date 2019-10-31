@@ -24,8 +24,23 @@ namespace Clinica.Controllers
         // GET: consulta
         public async Task<IActionResult> Index()
         {
-            var clinicaContext = _context.Consulta.Include(c => c.IdDoctorNavigation).Include(c => c.IdExpedienteNavigation);
-            return View(await clinicaContext.ToListAsync());
+            //var clinicaContext = _context.Consulta.Include(c => c.IdDoctorNavigation).Include(c => c.IdExpedienteNavigation);
+            var resu = (from c in _context.Consulta
+                 join e in _context.Expediente on c.IdExpediente equals e.IdExpediente
+                 where e.Estado == 0
+                 select new Consulta{
+                     IdConsulta = c.IdConsulta,
+                     Asunto = c.Asunto,
+                     Fecha = c.Fecha,
+                     MontoCaja = c.MontoCaja,
+                     SeguroMedico = c.SeguroMedico
+                     //IdExpedienteNavigation = c.IdExpedienteNavigation
+
+                 }).ToListAsync();
+
+
+            //return View(await clinicaContext.ToListAsync());
+            return View(await resu);
         }
         
         public IActionResult Detalles(int id)
