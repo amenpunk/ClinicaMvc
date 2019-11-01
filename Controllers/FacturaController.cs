@@ -68,11 +68,12 @@ namespace Clinica.Controllers
                 await _context.SaveChangesAsync();
                 //return RedirectToAction(nameof(Index));
                 
-                return Redirect("http://localhost/reportes/factura.php?id="+ id+"&nit="+nit);
+                return Redirect("https://clinreportes.azurewebsites.net/factura.php?id="+ id+"&nit="+nit);
             }
             ViewData["IdExpediente"] = new SelectList(_context.Expediente, "IdExpediente", "IdExpediente", factura.IdExpediente);
-            return View(factura);
+            //return View(factura);
             //return Redirect("http://localhost/reportes/factura.php");
+            return RedirectToAction("Index", "Factura");
             //return new RedirectResult("http://localhost/reportes/factura.php");
         }
 
