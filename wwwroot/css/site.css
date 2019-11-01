@@ -18,45 +18,8 @@
   transition: width .3s;
 }
 
-
-#cobro{
-  padding:5%;
-  background: rgba(0, 0, 0, .3);
-}
-
-#encabezado{
-  padding:5%;
-  background: rgba(0, 0, 0, .2);
-}
-
-.navbar{
-  background-color: #1e1e1e !important;
-  color:white !important;
-}
-
-.navbar a:visited{
-  background-color: #1e1e1e !important;
-  color:white !important;
-}
-
-.navbar a:link{
-  background-color: #1e1e1e !important;
-  color:white !important;
-}
-
-header{
-  background-color: #1e1e1e !important;
-  color: white !important;
-}
-
 /* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
-
-a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
-}
 
 /* Sticky footer styles
 * {
@@ -72,77 +35,6 @@ a.navbar-brand {
   }
 }
 
-.border-top {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(255, 255, 255, .05);
-}
-
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
-}
-
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-body {
-  /* Margin bottom by footer height */
-  background: #ffffff;
-  margin-bottom: 60px;
-}
-
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-  line-height: 60px; /* Vertically center the text there */
-}
-
-body > header > nav > div > button > i{
-  color: white !important;
-}
-
-.cerrar{
-  padding: 0;
-  float: right;
-  display: block;
-    background:
-       linear-gradient(
-         to bottom, var(--mainColor) 0%,
-         var(--mainColor) 100%
-       );
-      background-position: 0 100%;
-      background-repeat: repeat-x;
-      background-size: 4px 4px;
-    color: #000;
-    text-decoration: none;
-    transition: background-size .2s;
-}
-
-.cerrar:hover {
-  background-size: 4px 50px;
-}
-
-
-.btn-limpio {
-  white-space: normal !important;
-  word-wrap: break-word !important;
-}
-
-  
 @media (max-width: 768px) {
   .btn-responsive {
     padding:2px 4px;
@@ -158,4 +50,8 @@ body > header > nav > div > button > i{
     font-size:90%;
     line-height: 1.2;
   }
+}
+
+.container{
+    padding-top: 15px;
 }
