@@ -87,7 +87,7 @@
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2019 - Clinica.
-            <a class="cerrar nav-link text-dark" asp-area="" asp-controller="AdminLogin" asp-action="Logout">Cerrar Session</a>
+            <a class="cerrar nav-link text-dark" asp-area="" asp-controller="AdminLogin" asp-action="Logout">Cerrar Sesion <strong id="userid"> @Context.User.Identity.Name</strong></a>
         </div>
     </footer>
 
