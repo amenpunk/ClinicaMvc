@@ -17,22 +17,10 @@
     <a class="btn btn-primary" asp-action="Create">Crear Nueva</a>
 </p>
 <hr style="width:100%">
-<table class="table table-sm table-responsive">
+<table class="table">
     <thead class="thead-dark">
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Asunto)
-            </th>
-            
-            <th>
-                @Html.DisplayNameFor(model => model.Fecha)
-            </th>
-            <th>
-                Seguro
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MontoCaja)
-            </th>
+            <th>Detalle de la Cita<th>
             <th> Operacion</th>
         </tr>
     </thead>
@@ -40,13 +28,16 @@
     @foreach (var item in Model) {
         <tr>
             <td>
+                <p>
+                <strong>Asunto</strong>
                 @Html.DisplayFor(modelItem => item.Asunto)
-            </td>
-            
-            <td>
+                </p>
+                <p>
+                <strong>Fecha</strong>
                 @Html.DisplayFor(modelItem => item.Fecha)
-            </td>
-            <td>
+                </p>
+                <p>
+                <strong>Seguro</strong>
                 @{
 
                     if( item.SeguroMedico == 1){
@@ -55,16 +46,15 @@
                         <text>No</text>
                     }
                 }
-            </td>
-             <!-- 
-            <td>
-              @Html.DisplayFor(modelItem => item.IdExpedienteNavigation.IdExpediente) 
-            </td>
-            -->
-            <td>
+                </p>
+
+                <p>
+                <strong>Monto</strong>
                 @Html.DisplayFor(modelItem => item.MontoCaja)
+                </p>
             </td>
-            <td class="btn-group flex-wrap">
+           
+            <td class="">
                 <a class="   btn btn-info btn-block regular-link " asp-action="Edit" asp-route-id="@item.IdConsulta">Edit</a>
                 <a class="    btn btn-info btn-block regular-link btn-warning  " asp-action="Detalles" asp-route-id="@item.IdConsulta">Detalles Consulta</a>
                 <a class="    btn btn-info btn-block regular-link btn-danger  " asp-action="Delete" asp-route-id="@item.IdConsulta">Delete</a>

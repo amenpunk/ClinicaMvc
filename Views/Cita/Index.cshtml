@@ -17,23 +17,17 @@
 <p>
     <a class="btn btn-primary" asp-action="Create">Crear Nueva</a>
 </p>
-<table class="table table-sm  table-bordered ">
+<table class="table">
     <thead class="thead-dark">
         <tr>
             <th>
                 Paciente
             </th>
+
             <th>
-                @Html.DisplayNameFor(model => model.Estado)
+                Informacion de la Cita
             </th>
-            <th>
-                Fecha Cita
-            </th>
-            <!--
-            <th>
-                Fecha de Finalización
-            </th>
-            --> 
+             
             <th>
                 Operacion
             </th>
@@ -43,9 +37,15 @@
         @foreach (var item in Model) {
         <tr>
             <td class="ciente" value="@Html.DisplayFor(modelItem => item.IdPacienteNavigation.IdPaciente)">
-
+            
             </td>
+
             <td>
+            <p> 
+            <strong>
+                Estado:
+            </strong>
+
             @{
                 switch(item.Estado){
                     case "1": <text>Pendiente</text>; break;
@@ -58,9 +58,11 @@
                     default: break;
                 }
             }
-            </td>
-            <td>
+            </p> 
+            <p>
+                <strong>Fecha:</strong>
                 @Html.DisplayFor(modelItem => item.FechaInicio)
+            </p>
             </td>
             <!--
             <td>

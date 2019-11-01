@@ -17,6 +17,13 @@
   width: 100%;
   transition: width .3s;
 }
+*{
+  list-style: none;
+}
+ul,li{
+  list-style: none;
+  text-decoration: none;
+}
 
 /* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
