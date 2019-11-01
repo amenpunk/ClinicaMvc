@@ -35,63 +35,61 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
-    <header class="navegador">
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><i class="fas fa-home"></i></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <!--
-                    <span class="navbar-toggler-icon"></span>
-                    -->
-                    <i class="fas fa-list"></i>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        
-                        <li class="nav-item">
-                            <a class="cool-link nav-link text-dark" asp-area="" asp-controller="paciente" asp-action="index">Pacientes</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="cool-link nav-link text-dark" asp-area="" asp-controller="Cita" asp-action="index">Agenda</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="cool-link nav-link text-dark" asp-area="" asp-controller="consulta" asp-action="index">Consultas</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="cool-link nav-link text-dark" asp-area="" asp-controller="Factura" asp-action="index">Caja</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="cool-link nav-link text-dark" asp-area="" asp-controller="Mantenimiento" asp-action="index">Mantenimientos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="cool-link nav-link text-dark" asp-area="" asp-controller="Reportes" asp-action="index">Reportes</a>
-                        </li>
-                        <!--
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Reportes</a>
-                        </li>
-                        -->
-                    </ul>
-                
-        </nav>
-    </header>
 
-    <div class="container">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #1e1e1e;">
+  <a  asp-controller="Home" asp-action="Index" class="navbar-brand">Clinica Médica</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+     
+     <li class="nav-item">
+         <a class="cool-link nav-link" asp-area="" asp-controller="paciente" asp-action="index">Pacientes</a>
+     </li>
+     <li class="nav-item">
+         <a class="cool-link nav-link" asp-area="" asp-controller="Cita" asp-action="index">Agenda</a>
+     </li>
+     <li class="nav-item">
+         <a class="cool-link nav-link" asp-area="" asp-controller="consulta" asp-action="index">Consultas</a>
+     </li>
+     <li class="nav-item">
+         <a class="cool-link nav-link" asp-area="" asp-controller="Factura" asp-action="index">Caja</a>
+     </li>
+     <li class="nav-item">
+         <a class="cool-link nav-link" asp-area="" asp-controller="Mantenimiento" asp-action="index">Mantenimientos</a>
+     </li>
+     <li class="nav-item">
+         <a class="cool-link nav-link" asp-area="" asp-controller="Reportes" asp-action="index">Reportes</a>
+     </li>
+    
+
+    </ul>
+
+    <div class="div-inline my-2 my-lg-0">
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          @Context.User.Identity.Name
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a  asp-controller="AdminLogin" asp-action="Logout" class="dropdown-item">Cerrar Session</a>
+        </div>
+      </li>
+    </div>
+  </div>
+</nav>
+        <div class="container">
         <partial name="_CookieConsentPartial" />
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2019 - Clinica.
-            <a class="cerrar nav-link text-dark" asp-area="" asp-controller="AdminLogin" asp-action="Logout">Cerrar Session</a>
-        </div>
-    </footer>
-
      <script src="~/js/site.js" asp-append-version="true"></script>
+     <!--
+     <script src="~/js/post.js" asp-append-version="true"></script>
+     -->
 
     @RenderSection("Scripts", required: false)
 </body>
