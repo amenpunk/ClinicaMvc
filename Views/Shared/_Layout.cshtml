@@ -69,12 +69,8 @@
 
     <div class="div-inline my-2 my-lg-0">
         <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          @Context.User.Identity.Name
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a  asp-controller="AdminLogin" asp-action="Logout" class="dropdown-item">Cerrar Session</a>
-        </div>
+          <a  asp-controller="AdminLogin" asp-action="Logout" class="btn btn-danger">
+          @Context.User.Identity.Name</a>
       </li>
     </div>
   </div>

@@ -40,29 +40,8 @@
             </th>
         -->
             <th>
-                Nombre Completo
+                Informacion del Paciente
             </th>
-            
-            <th>
-                @Html.DisplayNameFor(model => model.FechaNacimiento)
-            </th>
-            <th>
-                CUI/DPI
-            </th>
-           <!-- 
-            <th>
-                @Html.DisplayNameFor(model => model.TipoEncargado)
-                @Html.DisplayNameFor(model => model.NoId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NombreEncargado)
-                @Html.DisplayNameFor(model => model.NumeroTel)
-            </th>
-            -->
-            <th>
-            Numero de Teléfono
-            </th>
-            
             <th>Operación</th>
         </tr>
     </thead>
@@ -70,19 +49,35 @@
 @foreach (var item in Model) {
         <tr>
             <td>
+                <p>
+                    <strong>
+                    Nombre Completo:
+                    </strong>
                 @Html.DisplayFor(modelItem => item.PrimerNombre) 
                 @Html.DisplayFor(modelItem => item.SegundoNombre)
                 @Html.DisplayFor(modelItem => item.PrimerApellido)
                 @Html.DisplayFor(modelItem => item.SegundoApellido)
                 @Html.DisplayFor(modelItem => item.ApellidoCasada)
+                <p>
+
+                <p>
+                    <strong>
+                    Fecha de Nacimiento:
+                    </strong>
+                @Html.DisplayFor(modelItem => item.FechaNacimiento)
+                </p>
+
+                <p>
+                    <strong>CUI/ID:</strong>
+                @Html.DisplayFor(modelItem => item.NoId)
+                </p>
+            
+                <p>
+                    <strong>Telefono:</strong>
+                @Html.DisplayFor(modelItem => item.NumeroTel)
+                </p>
             </td>
             
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaNacimiento)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NoId)
-            </td>
             <!-- 
             <td>
                 @Html.DisplayFor(modelItem => item.Genero)
@@ -94,9 +89,6 @@
                 @Html.DisplayFor(modelItem => item.NombreEncargado)
             </td>
             -->
-            <td>
-                @Html.DisplayFor(modelItem => item.NumeroTel)
-            </td>
             
             <td>
                 <a class=" btn btn-info btn-block regular-link " asp-action="Edit" asp-route-id="@item.IdPaciente">Edit</a>
